@@ -1,8 +1,10 @@
 import { put } from 'redux-saga/effects';
 import * as actions from '../actions';
+import delay from '@redux-saga/delay-p'
 
 export function* start() {
-    const date = new Date();
-
-    yield put(actions.setTime(date));
+    while (true) {
+        yield put(actions.tick());
+        yield delay(2000);
+    }
 }

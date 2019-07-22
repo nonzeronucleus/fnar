@@ -3,10 +3,10 @@ import { createReducer } from 'redux-act';
 // import _ from 'lodash'
 import * as actions from '../actions';
 
-const time = createReducer({
-  [actions.setTime]: (state, payload) => payload
-}, null)
+const tickCount = createReducer({
+  [actions.tick]: (state, payload) => state+1
+}, 0)
 
 export default combineReducers({
-  time
+  tickCount
 });
