@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled  from 'styled-components';
 import scene from './img/office.png'
-
 
 const Frame = styled.div`
     max-width:1200px;
     overflow: hidden;
     text-indent: ${props => props.pos}px;
     background-color:blue;
+    transition: text-indent 1s;
 `;
 
 const Image = styled.img`
     max-width: initial;
 `;
-
-        // onMouseMove={({ clientX, clientY }) =>
-        //     {console.log(clientX, clientY)}}>
 
 export default () => {
     const [pos, setPos] = useState(0);
@@ -49,6 +46,7 @@ export default () => {
                 onMouseLeave={() => setMouseInside(false)}
                 onMouseMove={({clientX,clientY}) => setMousePos({x:clientX,y:clientY})}
                 pos={pos}
+                animate={mousePos.x<100}
             >
                 <Image src={scene} alt="main"/>
             </Frame>
@@ -59,8 +57,4 @@ export default () => {
         </div>
     );
 }
-            // Pos: {pos}
-            // mouseInside: {mouseInside? 'true':'false'}
-            // MousePos:{JSON.stringify(mousePos)}
-
 
