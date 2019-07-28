@@ -1,20 +1,6 @@
 import React, { useState } from 'react';
-import styled  from 'styled-components';
-import scene from './img/office.png'
 
-const Frame = styled.div`
-    max-width:1200px;
-    overflow: hidden;
-    text-indent: ${props => props.pos}px;
-    background-color:blue;
-    transition: text-indent 1s;
-`;
-
-const Image = styled.img`
-    max-width: initial;
-`;
-
-export default () => {
+export default ({children}) => {
     const [pos, setPos] = useState(0);
     const [mouseInside, setMouseInside] = useState(false)
     const [mousePos, setMousePos] = useState({x:0,y:0})
@@ -35,20 +21,19 @@ export default () => {
                setPos(-400)
             }
         }
+        console.log(mousePos)
     }
 
 
     return(
-        <div>
-            <Frame
+        <div
                 onMouseEnter={() => setMouseInside(true)}
                 onMouseLeave={() => setMouseInside(false)}
                 onMouseMove={({clientX,clientY}) => setMousePos({x:clientX,y:clientY})}
                 pos={pos}
                 animate={mousePos.x<100}
             >
-                <Image src={scene} alt="main"/>
-            </Frame>
+            {children}
         </div>
     );
 }
