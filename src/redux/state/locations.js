@@ -11,7 +11,7 @@ const getInitLocations = () => {
 };
 
 const locations = createReducer({
-  [actions.moveEnemy]: (state, payload) => state.set(payload.enemy, payload.location)
+  [actions.moveEnemy]: (state, payload) => state.set(payload.character, payload.to)
 }, getInitLocations());
 
 export default locations;

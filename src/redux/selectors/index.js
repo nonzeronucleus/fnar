@@ -5,7 +5,7 @@ export const getTime = ({time}) => time;
 
 
 export const getCharacterLocations = ({locations}) => {
-    return Object.keys(characters).map(charId => ({character:characters[charId].name, location:locations.get(charId)}))
+    return Object.keys(characters).map(charId => ({character:charId, location:locations.get(charId)}))
 }
 
 ///locations.map(location => ({character:characters.}))
