@@ -1,6 +1,8 @@
 import React from 'react';
+import {useDispatch} from 'redux-react-hook';
 import map from './img/map.png'
 import ImageMapper from 'react-image-mapper';
+import * as actions from '../../redux/actions';
 import rooms from '../../consts/building/rooms'
 
 
@@ -9,10 +11,14 @@ const moveOnArea = (evt) => {
 //   // console.log({x,y})
 }
 
-const clicked =area => console.log(area.name)
+// const clicked =area => console.log(area.name)
 
 
 export default () => {
+  const dispatch = useDispatch()
+
+  const updateRadar = area => dispatch(actions.selectRoom(area.name))
+
     const MAP = {
         name: "my-map",
         areas: [
@@ -28,5 +34,5 @@ export default () => {
       }
 
 
-    return (<ImageMapper onClick={clicked} onImageMouseMove={evt => moveOnArea(evt)} src={map} width={200} map={MAP}/>)
+    return (<ImageMapper onClick={updateRadar} onImageMouseMove={evt => moveOnArea(evt)} src={map} width={200} map={MAP}/>)
 }
