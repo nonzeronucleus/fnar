@@ -1,6 +1,6 @@
 import { put, select } from 'redux-saga/effects';
 import { getCharacterLocations } from '../selectors';
-import building from '../building';
+import building from '../../consts/building';
 
 import * as actions from '../actions';
 

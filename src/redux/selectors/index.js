@@ -1,4 +1,4 @@
-import characters from '../characters';
+import characters from '../../consts/characters';
 
 export const getTime = ({time}) => time;
 

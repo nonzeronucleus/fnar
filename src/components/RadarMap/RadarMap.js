@@ -1,7 +1,7 @@
 import React from 'react';
 import map from './img/map.png'
 import ImageMapper from 'react-image-mapper';
-import rooms from '../../redux/building/rooms'
+import rooms from '../../consts/building/rooms'
 
 
 const moveOnArea = (evt) => {
