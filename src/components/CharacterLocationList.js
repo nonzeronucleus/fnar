@@ -10,8 +10,6 @@ export default () => {
   );
 
   const {characterLocations} = useMappedState(mapState);
-  // console.log(characterLocations);
-
 
   return (
     <>{JSON.stringify(characterLocations)}</>
