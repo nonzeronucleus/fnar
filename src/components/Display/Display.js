@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import ScrollableImage from '../ScrollableImage';
 import rooms from '../../consts/building/rooms';
 import {getSelectedRoom} from '../../redux/selectors';
+import Monitor from '../Monitor';
 
 const Display = styled.div`
     width:1600px;
@@ -22,7 +23,7 @@ const Middle = () => {
 
       return (selectedRoom === rooms.OFFICE
                 ? <ScrollableImage/>
-                : <div>{selectedRoom}</div>
+                : <Monitor room={selectedRoom} />
             )
 }
 

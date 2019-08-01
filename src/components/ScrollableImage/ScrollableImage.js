@@ -39,17 +39,15 @@ export default () => {
 
 
     return(
-        <div>
-            <Frame
-                onMouseEnter={() => setMouseInside(true)}
-                onMouseLeave={() => setMouseInside(false)}
-                onMouseMove={({clientX,clientY}) => setMousePos({x:clientX,y:clientY})}
-                pos={pos}
-                animate={mousePos.x<100}
-            >
-                <Image src={scene} alt="main"/>
-            </Frame>
-        </div>
+        <Frame
+            onMouseEnter={() => setMouseInside(true)}
+            onMouseLeave={() => setMouseInside(false)}
+            onMouseMove={({clientX,clientY}) => setMousePos({x:clientX,y:clientY})}
+            pos={pos}
+            animate={mousePos.x<100}
+        >
+            <Image src={scene} alt="main"/>
+        </Frame>
     );
 }
 
