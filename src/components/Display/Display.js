@@ -3,7 +3,7 @@ import {useMappedState} from 'redux-react-hook';
 import styled from 'styled-components';
 import ScrollableImage from '../ScrollableImage';
 import rooms from '../../consts/building/rooms';
-import {getSelectedRoom} from '../../redux/selectors';
+import {getSelectedRoom, getCharactersInRoom} from '../../redux/selectors';
 import Monitor from '../Monitor';
 
 const Display = styled.div`
@@ -15,15 +15,16 @@ const Display = styled.div`
 const Middle = () => {
     const mapState = useCallback(
         state => ({
-          selectedRoom: getSelectedRoom(state),
+          room: getSelectedRoom(state),
+          characters: getCharactersInRoom(state)
         }), []
       );
 
-      const {selectedRoom} = useMappedState(mapState);
+      const {room, characters} = useMappedState(mapState);
 
-      return (selectedRoom === rooms.OFFICE
+      return (room === rooms.OFFICE
                 ? <ScrollableImage/>
-                : <Monitor room={selectedRoom} />
+                : <Monitor {...{room, characters}} />
             )
 }
 
