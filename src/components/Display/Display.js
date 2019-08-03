@@ -16,15 +16,15 @@ const Middle = () => {
     const mapState = useCallback(
         state => ({
           room: getSelectedRoom(state),
-          characters: getCharactersInRoom(state)
+          charactersInRoom: getCharactersInRoom(state)
         }), []
       );
 
-      const {room, characters} = useMappedState(mapState);
+      const {room, charactersInRoom} = useMappedState(mapState);
 
       return (room === rooms.OFFICE
                 ? <ScrollableImage/>
-                : <Monitor {...{room, characters}} />
+                : <Monitor {...{room, charactersInRoom}} />
             )
 }
 
