@@ -1,7 +1,7 @@
 import React, {useCallback}  from 'react';
 import {useMappedState} from 'redux-react-hook';
 import styled from 'styled-components';
-import ScrollableImage from '../ScrollableImage';
+import Office from '../Office';
 import rooms from '../../consts/building/rooms';
 import {getSelectedRoom, getCharactersInRoom} from '../../redux/selectors';
 import Monitor from '../Monitor';
@@ -23,7 +23,7 @@ const Middle = () => {
       const {room, charactersInRoom} = useMappedState(mapState);
 
       return (room === rooms.OFFICE
-                ? <ScrollableImage/>
+                ? <Office/>
                 : <Monitor {...{room, charactersInRoom}} />
             )
 }
