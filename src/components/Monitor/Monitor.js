@@ -2,8 +2,7 @@ import React, {useEffect} from 'react';
 import styled, {keyframes} from 'styled-components';
 import rooms from '../../consts/building/rooms';
 import characters from '../../consts/characters';
-// import rainba from './characters/rainba.jpg';
-
+import HiddenImage from '../HiddenImage';
 
 const swing = keyframes`
     from {text-indent : -400px;}
@@ -23,23 +22,6 @@ const Frame = styled.div`
     position:relative;
 `;
 
-// const Image = styled.img`
-//     max-width: initial;
-//     max-height: initial;
-//     position: relative;
-// `;
-
-
-
-// const CharacterImage = styled.img`
-//     /* position: relative; */
-//     max-width: initial;
-//     max-height: initial;
-//     top:0;
-//     left:0;
-//     position: absolute;
-// `;
-
 const getRoomImage = (imgs, room) => ({
     ...imgs,
     [room]: require(`./img/${room}.jpg`)
@@ -53,12 +35,6 @@ const getCharacterImage = (imgs, room) => ({
 
 const roomImages = Object.values(rooms).reduce(getRoomImage, {})
 const characterImages = Object.values(characters).reduce(getCharacterImage, {})
-
-
-const HiddenImage = styled.img`
-    visibility: hidden;
-    z-index: -999;
-`;
 
 
 export default ({room, charactersInRoom}) => {
@@ -106,15 +82,3 @@ export default ({room, charactersInRoom}) => {
         </Frame>
     )
 }
-
-// export default ({room, characters}) => (
-//     <Frame>
-//         <canvas width={640} height={425}       onClick={e => {
-//             alert(e.clientX)
-//           }}/>
-//     </Frame>
-// )
-
-// <Image src={roomImages[room]} role="presentation" alt="" />
-// {characters.includes("Rainba") && <CharacterImage src={rainba} />}
-

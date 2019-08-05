@@ -1,1 +1,1 @@
-export { default } from './ScrollableImage';
+export { default } from './Scroller';
