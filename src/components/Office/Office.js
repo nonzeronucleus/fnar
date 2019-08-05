@@ -1,105 +1,52 @@
-import React, { useEffect, useMemo, useRef } from 'react';
-import scene from './img/office.png';
-import openDoor from './img/door-open.jpg';
-import HiddenImage from '../HiddenImage';
+import React, {useState} from 'react';
+import styled from 'styled-components';
+import room from './img/office.png';
+import doorClosed from './img/door-closed.png';
+import doorOpen from './img/door-open.png';
+
+
+const Container = styled.div`
+    position:relative;
+    top:0px;
+    left: ${props => props.left}px;
+
+    transition: left 1s;
+`;
+
+
+const Img1 = styled.img`
+  /* border: 1px solid #f00; */
+  position: relative;
+  top:0px;
+  z-index: 2;
+`;
+
+const DoorDisplay = styled.img`
+  /* border: 1px solid #f00; */
+  top:-500px;
+  left: ${props => props.left || 0}px;
+
+  position: relative;
+  z-index: 2;
+`;
+
 
 export const Door = ({id, left, top}) => {
-    // const [open, setOpen] = useState([]);
-    console.log('door')
-    return <HiddenImage {...{id, left, top}} src={openDoor} role="presentation" alt=""/>
-}
+    const [open, setOpen] = useState([]);
 
-const isClickInObject = ({x,y}) => ({left, top, width, height}) =>
-    left <= x &&
-    left + width >= x &&
-    top <= y &&
-    top + height >= y
-
-const objectClickable = ({props}) => props.clickable;
-
-const TrackableCanvas = ({width, height, children}) => {
-
-    const objects = useRef([]);
-
-    const updateObjects = () => {
-        objects.current = children
-            .filter(objectClickable)
-            .map (child =>  {
-                const {id} = child.props;
-                const {width, height} = document.getElementById(id);
-                const {left = 0, top = 0} = child.props;
-
-                return {
-                    id,
-                    width, height,
-                    left, top,
-                }
-            })
-    }
-
-    const onClick = (e) => {
-        const checkClick = isClickInObject({x: e.clientX, y:e.clientY})
-
-        const clickedObjects = objects.current
-            .filter(checkClick)
-            .map(object => object.id)
-
-        console.log(clickedObjects)
-    }
-
-    const paint = () => {
-        const context = canvasRef.current.getContext("2d");
-        context.save();
-        context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-
-        children.forEach (child =>  {
-            const elem = document.getElementById(child.props.id);
-            console.log({elem})
-            if (!elem) return;
-            const {left = 0, top = 0} = child.props;
-            context.drawImage(elem,left,top);
-        });
-
-        context.restore();
-    }
-
-
-    const refresh = () => {
-        paint();
-        updateObjects();
-    }
-
-    useEffect(() => {
-        refresh();
-    })
-
-    const onLoad = () => {
-        refresh();
-    }
-
-
-
-    const canvasRef = React.useRef(null);
-
-    return <canvas ref={canvasRef} {...{width, height}} onClick={onClick} >
-        {children.map ((child, i) => {
-            return React.cloneElement(child, {key:i, onLoad: onLoad})
-        })}
-    </canvas>
+    return open
+        ? <DoorDisplay {...{left}} src={doorOpen} onClick={() => setOpen(false)}/>
+        : <DoorDisplay {...{left}} src={doorClosed} onClick={() => setOpen(true)}/>
 }
 
 
 
-export default () => {
+export default ({pos}) => (
+    <Container left={pos} >
+        <Img1 src={room} />
+        <Door left={0}/>
+        <Door left={600}/>
+    </Container>
+)
 
-    return useMemo(() => (
-        <TrackableCanvas
-            width={1600}
-            height={768}
-        >
-            <HiddenImage src={scene} role="presentation" alt="" id="room" />
-            <Door id="door" left={0} top={300} clickable = {true}/>
 
-        </TrackableCanvas>
-    ), []);
-}

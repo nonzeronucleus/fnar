@@ -7,7 +7,8 @@ const Frame = styled.div`
     max-width:1200px;
     max-height:768px;
     overflow: hidden;
-    text-indent: ${props => props.pos}px;
+    /* text-indent: ${props => props.pos}px; */
+
     background-color:blue;
     transition: text-indent 1s;
 `;
@@ -41,10 +42,9 @@ export default () => {
             onMouseEnter={() => setMouseInside(true)}
             onMouseLeave={() => setMouseInside(false)}
             onMouseMove={({clientX,clientY}) => setMousePos({x:clientX,y:clientY})}
-            pos={pos}
             animate={mousePos.x<100}
         >
-            <Office />
+            <Office {...{pos}}/>
         </Frame>
     );
 }
