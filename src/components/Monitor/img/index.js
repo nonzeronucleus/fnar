@@ -1,15 +1,19 @@
-// import Hat1 from '../../assets/img/accesories/hats/hat1.png';
-// import Hat2 from '../../assets/img/accesories/hats/hat2.png';
-// import Hat3 from '../../assets/img/accesories/hats/hat3.png';
-// import Hat4 from '../../assets/img/accesories/hats/hat4.png';
-// import Hat5 from '../../assets/img/accesories/hats/hat5.png';
-// import Hat6 from '../../assets/img/accesories/hats/hat6.png';
+import rooms from '../../../consts/building/rooms';
 
-// export const hatsArr = [
-//     Hat1,
-//     Hat2,
-//     Hat3,
-//     Hat4,
-//     Hat5,
-//     Hat6
-// ];
+import corridor from './corridor.jpg';
+import diningRoom from './dining room.jpg';
+import fusionCove from './fusion cove.jpg';
+import kitchen from './kitchen.jpg';
+import leftHall from './left hall.jpg';
+import rightHall from './right hall.jpg';
+import toilet from './toilet.jpg';
+
+export default {
+    [rooms.LEFT_HALL]: leftHall,
+    [rooms.RIGHT_HALL]:rightHall,
+    [rooms.CORRIDOR]: corridor,
+    [rooms.FUSION_COVE]: fusionCove,
+    [rooms.DINING_ROOM]: diningRoom,
+    [rooms.KITCHEN]: kitchen,
+    [rooms.TOILET]: toilet
+}

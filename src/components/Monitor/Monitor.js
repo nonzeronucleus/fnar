@@ -1,7 +1,8 @@
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
-import rooms from '../../consts/building/rooms';
-import characters from '../../consts/characters';
+// import characters from '../../consts/characters';
+import roomImages from './img';
+import characterImages from './characters';
 
 const swing = keyframes`
     from {text-indent : -400px;}
@@ -42,30 +43,29 @@ const CharacterImg = styled.img`
 `;
 
 
-const getImage = (path) => async (imgPromises, key) => {
-    const img = await import(`./${path}/${key}.jpg`);
-    const imgs = await imgPromises;
+// const getImage = (path) => async (imgPromises, key) => {
+//     const img = await import(`./${path}/${key}.jpg`);
+//     const imgs = await imgPromises;
 
-    return ({
-        ...imgs,
-        [key]: img.default
-    } )
-}
-
-
-const getRoomImage = getImage('img')
-const getCharacterImage = getImage('characters')
+//     return ({
+//         ...imgs,
+//         [key]: img.default
+//     } )
+// }
 
 
-let roomImages;
-let characterImages;
+// // const getRoomImage = getImage('img')
+// const getCharacterImage = getImage('characters')
 
-const init = async () => {
-    roomImages = await Object.values(rooms).reduce(getRoomImage, {})
-    characterImages = await Object.values(characters).reduce(getCharacterImage, {})
-}
 
-init();
+// // let roomImages;
+// let characterImages;
+
+// const init = async () => {
+//     characterImages = await Object.values(characters).reduce(getCharacterImage, {})
+// }
+
+// init();
 
 
 export default ({room, charactersInRoom}) => {
