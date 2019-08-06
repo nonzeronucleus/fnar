@@ -42,21 +42,31 @@ const CharacterImg = styled.img`
 `;
 
 
+const getImage = (path) => async (imgPromises, key) => {
+    const img = await import(`./${path}/${key}.jpg`);
+    const imgs = await imgPromises;
+
+    return ({
+        ...imgs,
+        [key]: img.default
+    } )
+}
 
 
-const getRoomImage = (imgs, room) => ({
-    ...imgs,
-    [room]: import(`./img/${room}.jpg`)
-})
-
-const getCharacterImage = (imgs, room) => ({
-    ...imgs,
-    [room]: import(`./characters/${room}.jpg`)
-})
+const getRoomImage = getImage('img')
+const getCharacterImage = getImage('characters')
 
 
-const roomImages = Object.values(rooms).reduce(getRoomImage, {})
-const characterImages = Object.values(characters).reduce(getCharacterImage, {})
+let roomImages;
+let characterImages;
+
+const init = async () => {
+    roomImages = await Object.values(rooms).reduce(getRoomImage, {})
+    characterImages = await Object.values(characters).reduce(getCharacterImage, {})
+}
+
+init();
+
 
 export default ({room, charactersInRoom}) => {
     return (
@@ -64,7 +74,7 @@ export default ({room, charactersInRoom}) => {
             <Container>
                 <RoomImg src={roomImages[room]} role="presentation" alt="" id="room"/>
                 { charactersInRoom.map( (character, i)  => {
-                    return <CharacterImg src={characterImages[character]} role="presentation" alt="" id="room" pos={i}/>
+                    return <CharacterImg src={characterImages[character]} key={i} role="presentation" alt="" id="room" pos={i}/>
                 })}
             </Container>
         </Frame>
