@@ -1,8 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled, {keyframes} from 'styled-components';
 import rooms from '../../consts/building/rooms';
 import characters from '../../consts/characters';
-import HiddenImage from '../HiddenImage';
 
 const swing = keyframes`
     from {text-indent : -400px;}
@@ -11,16 +10,39 @@ const swing = keyframes`
 
 
 const Frame = styled.div`
-    max-width:1200px;
-    max-height:768px;
+    width:1200px;
+    height:768px;
     overflow: hidden;
     /* text-indent: ${props => props.pos}px; */
     background-color:blue;
     transition: text-indent 1s;
     animation: ${swing} 6s linear infinite;
     animation-direction: alternate;
-    position:relative;
+    position:absolute;
 `;
+
+const Container = styled.div`
+    position:absolute;
+    width:1600px;
+    height:768;
+`;
+
+const RoomImg = styled.img`
+  position: absolute;
+  top:0px;
+  z-index: 2;
+`;
+
+
+const CharacterImg = styled.img`
+    position: relative;
+    top:0px;
+    /* left: ${props => props.pos*180}px; */
+    z-index: 2;
+`;
+
+
+
 
 const getRoomImage = (imgs, room) => ({
     ...imgs,
@@ -36,49 +58,15 @@ const getCharacterImage = (imgs, room) => ({
 const roomImages = Object.values(rooms).reduce(getRoomImage, {})
 const characterImages = Object.values(characters).reduce(getCharacterImage, {})
 
-
 export default ({room, charactersInRoom}) => {
-    // const width = 1600;
-    // const height = 768;
-
-    const canvasRef = React.useRef(null)
-
-    const paint = () => {
-        const context = canvasRef.current.getContext("2d");
-        let pos = 0;
-
-        context.save();
-        context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        context.drawImage(document.getElementById("room"),0,0);
-        charactersInRoom.forEach( character => {
-            const img = document.getElementById(character)
-            context.drawImage(img,pos,0)
-            pos+=img.width;
-        });
-        context.restore();
-    }
-
-    useEffect(() => {
-        paint();
-    })
-
-    const onLoad = () => {
-        paint();
-    }
-
     return (
         <Frame>
-            <canvas
-                ref={canvasRef}
-                width={1600}
-                height={768}
-            >
-            </canvas>
-            <HiddenImage src={roomImages[room]} role="presentation" alt="" id="room" onLoad={onLoad}/>
-
-            {charactersInRoom.map( character => <HiddenImage src={characterImages[character]} role="presentation" alt="" key={character} id={character} onLoad={onLoad}/>)}
-
-
+            <Container>
+                <RoomImg src={roomImages[room]} role="presentation" alt="" id="room"/>
+                { charactersInRoom.map( (character, i)  => {
+                    return <CharacterImg src={characterImages[character]} role="presentation" alt="" id="room" pos={i}/>
+                })}
+            </Container>
         </Frame>
     )
 }

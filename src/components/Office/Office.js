@@ -5,29 +5,36 @@ import doorClosed from './img/door-closed.png';
 import doorOpen from './img/door-open.png';
 
 
-const Container = styled.div`
-    position:relative;
-    top:0px;
-    left: ${props => props.left}px;
+const Frame = styled.div`
+    width:1200px;
+    height:768px;
+    overflow: hidden;
+    text-indent: ${props => props.left}px;
+    transition: text-indent 1s;
 
-    transition: left 1s;
+    background-color:blue;
+    position:absolute;
+`;
+
+const Container = styled.div`
+    width:1920px;
+    height:768px;
+    position:absolute;
 `;
 
 
-const Img1 = styled.img`
-  /* border: 1px solid #f00; */
-  position: relative;
+const RoomImg = styled.img`
+  position: absolute;
   top:0px;
   z-index: 2;
 `;
 
 const DoorDisplay = styled.img`
-  /* border: 1px solid #f00; */
-  top:-500px;
-  left: ${props => props.left || 0}px;
+    top:240px;
+    left: ${props => props.left || 0}px;
 
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 2;
 `;
 
 
@@ -42,11 +49,13 @@ export const Door = ({id, left, top}) => {
 
 
 export default ({pos}) => (
-    <Container left={pos} >
-        <Img1 src={room} />
-        <Door left={0}/>
-        <Door left={600}/>
-    </Container>
+    <Frame left={pos} >
+      <Container>
+          <RoomImg src={room} />
+          <Door left={0}/>
+          <Door left={600}/>
+      </Container>
+    </Frame>
 )
 
 
