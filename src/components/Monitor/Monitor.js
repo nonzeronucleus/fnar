@@ -46,12 +46,12 @@ const CharacterImg = styled.img`
 
 const getRoomImage = (imgs, room) => ({
     ...imgs,
-    [room]: require(`./img/${room}.jpg`)
+    [room]: import(`./img/${room}.jpg`)
 })
 
 const getCharacterImage = (imgs, room) => ({
     ...imgs,
-    [room]: require(`./characters/${room}.jpg`)
+    [room]: import(`./characters/${room}.jpg`)
 })
 
 
