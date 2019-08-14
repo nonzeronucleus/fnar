@@ -7,4 +7,5 @@ export const getCharacterLocations = ({locations}) => {
 }
 
 export const getSelectedRoom = ({selectedRoom}) => selectedRoom;
-export const getCharactersInRoom = ({selectedRoom,locations}) => Object.keys(locations.filter(location => (location === selectedRoom)).toJSON());
+export const getCharactersInSelectedRoom = ({selectedRoom,locations}) => Object.keys(locations.filter(location => (location === selectedRoom)).toJSON());
+export const getCharactersInRoom = ({locations}, room) => Object.keys(locations.filter(location => (location === room)).toJSON());

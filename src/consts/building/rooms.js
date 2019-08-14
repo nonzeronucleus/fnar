@@ -6,5 +6,7 @@ export default {
  FUSION_COVE: 'fusion cove',
  DINING_ROOM: 'dining room',
  KITCHEN: 'kitchen',
- TOILET: 'toilet'
+ TOILET: 'toilet',
+ LEFT_DOOR: 'left door',
+ RIGHT_DOOR: 'right door'
 }

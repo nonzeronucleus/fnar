@@ -1,4 +1,4 @@
-import characters from '../../../consts/characters'
+import characters from '../../consts/characters'
 
 import ginger from './Ginger.jpg';
 import merwing from './Merwing.jpg';

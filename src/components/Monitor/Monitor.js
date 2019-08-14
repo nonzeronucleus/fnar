@@ -1,8 +1,7 @@
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
-// import characters from '../../consts/characters';
-import roomImages from './img';
-import characterImages from './characters';
+import roomImages from '../../img/rooms';
+import characterImages from '../../img/characters'
 
 const swing = keyframes`
     from {text-indent : -400px;}
@@ -25,7 +24,7 @@ const Frame = styled.div`
 const Container = styled.div`
     position:absolute;
     width:1600px;
-    height:768;
+    height:768px;
 `;
 
 const RoomImg = styled.img`
@@ -38,34 +37,9 @@ const RoomImg = styled.img`
 const CharacterImg = styled.img`
     position: relative;
     top:0px;
-    /* left: ${props => props.pos*180}px; */
+    left: ${props => props.pos*180}px;
     z-index: 2;
 `;
-
-
-// const getImage = (path) => async (imgPromises, key) => {
-//     const img = await import(`./${path}/${key}.jpg`);
-//     const imgs = await imgPromises;
-
-//     return ({
-//         ...imgs,
-//         [key]: img.default
-//     } )
-// }
-
-
-// // const getRoomImage = getImage('img')
-// const getCharacterImage = getImage('characters')
-
-
-// // let roomImages;
-// let characterImages;
-
-// const init = async () => {
-//     characterImages = await Object.values(characters).reduce(getCharacterImage, {})
-// }
-
-// init();
 
 
 export default ({room, charactersInRoom}) => {

@@ -1,20 +1,33 @@
 import React, { useState } from 'react';
 import styled  from 'styled-components';
-import Office from './Office';
 
 
 const Frame = styled.div`
-    max-width:1200px;
-    max-height:768px;
+    width:1200px;
+    height:768px;
     overflow: hidden;
-    /* text-indent: ${props => props.pos}px; */
 
     background-color:blue;
     transition: text-indent 1s;
 `;
 
 
-export default () => {
+
+const Inner = styled.div`
+    position:absolute;
+    width:1600px;
+    height:768px;
+    background-color:yellow;
+    left:0px;
+    top:0px;
+
+    overflow: hidden;
+    left: ${props => props.left}px;
+    transition: left 1s;
+`;
+
+
+export default ({children}) => {
     const [pos, setPos] = useState(0);
     const [mouseInside, setMouseInside] = useState(false)
     const [mousePos, setMousePos] = useState({x:0,y:0});
@@ -44,7 +57,9 @@ export default () => {
             onMouseMove={({clientX,clientY}) => setMousePos({x:clientX,y:clientY})}
             animate={mousePos.x<100}
         >
-            <Office {...{pos}}/>
+            <Inner left={pos} >
+                {children}
+            </Inner>>
         </Frame>
     );
 }

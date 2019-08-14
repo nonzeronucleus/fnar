@@ -5,6 +5,6 @@ import delay from '@redux-saga/delay-p'
 export function* start() {
     while (true) {
         yield put(actions.tick());
-        yield delay(2000000);
+        yield delay(2000);
     }
 }
