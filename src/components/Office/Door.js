@@ -2,7 +2,7 @@ import React, {useState, useCallback} from 'react';
 import {useMappedState} from 'redux-react-hook';
 
 import styled from 'styled-components';
-import {getCharactersInRoom, getSelectedRoom, getCharactersInSelectedRoom} from '../../redux/selectors';
+import {getCharactersInRoom} from '../../redux/selectors';
 import characterImages from '../../img/characters'
 
 
