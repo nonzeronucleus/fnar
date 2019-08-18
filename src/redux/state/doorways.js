@@ -1,6 +1,6 @@
 import { createReducer } from 'redux-act';
-import * as actions from '../../actions';
-import rooms from "../../../consts/rooms";
+import * as actions from '../actions';
+import rooms from "../../consts/rooms";
 
 
 const initDoorways = [
