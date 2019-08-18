@@ -12,6 +12,5 @@ export default combineReducers({
   selectedRoom,
   time,
   officeDoors,
-  // building,
   doorways
 });

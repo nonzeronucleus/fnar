@@ -17,5 +17,8 @@ const initDoorways = [
 ];
 
 export default createReducer({
-  [actions.toggleDoor]: (state, payload) => state
+  [actions.toggleDoor]: (state, {room, isOpen}) =>
+    isOpen
+      ? [...state, [rooms.OFFICE, room]]
+      : state.filter (doorway => doorway[1]!==room)
 }, initDoorways);
