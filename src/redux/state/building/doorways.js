@@ -1,6 +1,9 @@
+import { createReducer } from 'redux-act';
+import * as actions from '../../actions';
 import rooms from "../../../consts/rooms";
 
-export default [
+
+const initDoorways = [
   [rooms.OFFICE, rooms.LEFT_DOOR],
   [rooms.OFFICE, rooms.RIGHT_DOOR],
   [rooms.LEFT_DOOR, rooms.LEFT_HALL],
@@ -12,3 +15,7 @@ export default [
   [rooms.CORRIDOR, rooms.TOILET],
   [rooms.DINING_ROOM, rooms.KITCHEN],
 ];
+
+export default createReducer({
+  [actions.toggleDoor]: (state, payload) => state
+}, initDoorways);

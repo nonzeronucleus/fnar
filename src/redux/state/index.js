@@ -4,7 +4,8 @@ import tickCount from './tickCount';
 import selectedRoom from './selectedRoom';
 import time from './time';
 import officeDoors from './officeDoors'
-import building from './building';
+// import building from './building';
+import doorways from './building/doorways';
 
 export default combineReducers({
   tickCount,
@@ -12,5 +13,6 @@ export default combineReducers({
   selectedRoom,
   time,
   officeDoors,
-  building
+  // building,
+  doorways
 });

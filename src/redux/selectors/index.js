@@ -1,4 +1,6 @@
+import { createSelector } from 'reselect'
 import characters from '../../consts/characters';
+import getRoomsWithDoors from './getRoomsWithDoors';
 
 export const getCharacterLocations = ({locations}) => {
     return Object.values(characters).map(character => ({character:character, location:locations.get(character)}))
@@ -22,4 +24,9 @@ export const getTime = ({time}) => {
 
 export const isDoorOpen = ({officeDoors}, door) => officeDoors[door];
 
-export const getBuilding = ({building}) => building;
+const getDoorways = ({doorways}) => doorways
+
+export const getBuilding = createSelector(
+    getDoorways,
+    doorways => getRoomsWithDoors(doorways)
+)
