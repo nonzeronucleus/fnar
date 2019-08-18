@@ -1,29 +1,13 @@
-import React, {useState, useCallback} from 'react';
+import React, {useCallback} from 'react';
 import {useMappedState} from 'redux-react-hook';
 
 import styled from 'styled-components';
-import {getCharactersInRoom} from '../../redux/selectors';
-import characterImages from '../../img/characters'
-
-
+import {getCharactersInRoom, isDoorOpen} from '../../redux/selectors';
+import {useDispatch} from 'redux-react-hook';
 import doorClosed from '../../img/office/door-closed.png';
 import doorOpen from '../../img/office/door-open.png';
-
-const CharacterDisplay = styled.img`
-    position:absolute;
-    width:300px;
-    height:100px;
-    background-color:green;
-    left: ${props => props.left}px;
-    top:666px;
-`;
-
-
-const Character = ({character, left}) => {
-    return <CharacterDisplay  {...{left}}  src={characterImages[character]} />
-}
-
-
+import Character from './CharacterDisplay';
+import * as actions from '../../redux/actions';
 
 const DoorDisplay = styled.img`
     position:absolute;
@@ -32,28 +16,22 @@ const DoorDisplay = styled.img`
 `;
 
 export default ({room, left}) => {
-    const mapState = useCallback(
-        state => ({
-          charactersInRoom: getCharactersInRoom(state, room)
-        }), [room]
-      );
+  const dispatch = useDispatch()
 
-    //   const {charactersInRoom} = useMappedState(mapState);
-      const [open, setOpen] = useState([]);
+  const toggleDoor = isOpen => dispatch(actions.toggleDoor({room, isOpen}))
 
+  const mapState = useCallback(
+    state => ({
+      charactersInRoom: getCharactersInRoom(state, room),
+      open: isDoorOpen(state, room),
+    }), [room]
+  );
 
+  const {charactersInRoom, open} = useMappedState(mapState);
 
-    const {charactersInRoom} = useMappedState(mapState);
+  return <>
+      {charactersInRoom.length > 0 && <Character character={charactersInRoom[0]} {...{left}} />}
 
-
-    return <>
-        {
-            charactersInRoom.length > 0 && <Character character={charactersInRoom[0]} {...{left}} />
-        }
-
-        {open
-            ? <DoorDisplay {...{left}} src={doorOpen} onClick={() => setOpen(false)}/>
-            : <DoorDisplay {...{left}} src={doorClosed} onClick={() => setOpen(true)}/>}
-        </>
-
+      <DoorDisplay {...{left}} src={open ? doorOpen: doorClosed} onClick={() => toggleDoor(!open)}/>
+    </>
 }
