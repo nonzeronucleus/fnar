@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from 'redux-act';
 import * as actions from '../actions';
-import rooms from '../../consts/building/rooms';
+import rooms from '../../consts/rooms';
 
 
 const doorIsOpen = currentRoom => createReducer({

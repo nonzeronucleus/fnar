@@ -3,7 +3,7 @@ import {useDispatch} from 'redux-react-hook';
 import map from './img/map.png'
 import ImageMapper from 'react-image-mapper';
 import * as actions from '../../redux/actions';
-import rooms from '../../consts/building/rooms'
+import rooms from '../../consts/rooms'
 
 
 const moveOnArea = (evt) => {

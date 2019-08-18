@@ -1,4 +1,4 @@
-import rooms from "./rooms";
+import rooms from "../../../consts/rooms";
 
 export default [
   [rooms.OFFICE, rooms.LEFT_DOOR],

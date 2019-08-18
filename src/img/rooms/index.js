@@ -1,4 +1,4 @@
-import rooms from '../../consts/building/rooms';
+import rooms from '../../consts/rooms';
 
 import corridor from './corridor.jpg';
 import diningRoom from './dining room.jpg';

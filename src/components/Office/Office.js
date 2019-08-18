@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import office from '../../img/office/office.png';
 import Scroller from './Scroller';
 import Door from './Door';
-import Rooms from '../../consts/building/rooms'
+import Rooms from '../../consts/rooms'
 
 const BackgroundDisplay = styled.img`
     position:absolute;

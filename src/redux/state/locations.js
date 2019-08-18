@@ -1,7 +1,7 @@
 import { createReducer } from 'redux-act';
 import Immutable from 'immutable';
 import characters from '../../consts/characters'
-import rooms from '../../consts/building/rooms';
+import rooms from '../../consts/rooms';
 import * as actions from '../actions';
 
 const getInitLocations = () => {

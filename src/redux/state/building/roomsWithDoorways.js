@@ -1,5 +1,5 @@
-import rooms from './rooms';
-import doors from './doors';
+import rooms from '../../../consts/rooms';
+import doorways from './doorways';
 
 const addExit = room => (exits, door) => {
     if (door[0] === room) {
@@ -13,11 +13,8 @@ const addExit = room => (exits, door) => {
 
   const getExits = room => {
 
-    return doors.reduce(addExit(room), [])
+    return doorways.reduce(addExit(room), [])
   }
-
-//   export default Object.keys(rooms).map( room => ({id:room, name:rooms[room], exits:getExits(rooms[room])}));
-
 
 const addRoom =  (building, room) => {
     building[rooms[room]] = {exits: getExits(rooms[room])}
@@ -27,6 +24,3 @@ const addRoom =  (building, room) => {
 
 
 export default Object.keys(rooms).reduce(addRoom, {})
-
-
-  //( room => ({id:room, name:rooms[room], exits:getExits(rooms[room])}));

@@ -20,4 +20,6 @@ export const getTime = ({time}) => {
     return pad(hour)+":"+pad(mins);
 }
 
-export const isDoorOpen = ({doors}, room) => doors[room];
+export const isDoorOpen = ({officeDoors}, door) => officeDoors[door];
+
+export const getBuilding = ({building}) => building;

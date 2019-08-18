@@ -2,7 +2,7 @@ import React, {useCallback}  from 'react';
 import {useMappedState} from 'redux-react-hook';
 import styled from 'styled-components';
 import Office from '../Office';
-import rooms from '../../consts/building/rooms';
+import rooms from '../../consts/rooms';
 import {getSelectedRoom, getCharactersInSelectedRoom} from '../../redux/selectors';
 import Monitor from '../Monitor';
 
