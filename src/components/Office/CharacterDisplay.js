@@ -5,12 +5,12 @@ import characterImages from '../../img/characters';
 const CharacterDisplay = styled.img`
     position:absolute;
     width:300px;
-    height:100px;
     background-color:green;
     left: ${props => props.left}px;
-    top:666px;
+    top:266px;
+    z-index: ${props => props.zIndex};
 `;
 
-export default ({ character, left }) => {
-    return <CharacterDisplay {...{ left }} src={characterImages[character]} />;
+export default ({ character, left, zIndex = 0 }) => {
+    return <CharacterDisplay {...{ left, zIndex }} src={characterImages[character]} />;
 };

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useCallback} from 'react';
+import {useMappedState} from 'redux-react-hook';
 import styled from 'styled-components';
-
+import Character from './CharacterDisplay';
+import {getCharactersInRoom} from '../../redux/selectors';
 import office from '../../img/office/office.png';
 import Scroller from './Scroller';
 import Door from './Door';
-import Rooms from '../../consts/rooms'
+import rooms from '../../consts/rooms'
 
 const BackgroundDisplay = styled.img`
     position:absolute;
@@ -18,11 +20,22 @@ const BackgroundDisplay = styled.img`
 
 
 
-export default ({pos}) => (
-    <Scroller>
-        <BackgroundDisplay src={office}/>
+export default ({pos}) => {
+    const mapState = useCallback(
+        state => ({
+          charactersInRoom: getCharactersInRoom(state, rooms.OFFICE)
+        }), []
+      );
 
-        <Door room={Rooms.LEFT_DOOR} left={0}/>
-        <Door room={Rooms.RIGHT_DOOR} left={1200}/>
-    </Scroller>
-)
+    const {charactersInRoom} = useMappedState(mapState);
+
+    return (
+        <Scroller>
+            {charactersInRoom.length > 0 && <Character character={charactersInRoom[0]} left={600} zIndex={2} />}
+            <BackgroundDisplay src={office}/>
+
+            <Door room={rooms.LEFT_DOOR} left={0}/>
+            <Door room={rooms.RIGHT_DOOR} left={1200}/>
+        </Scroller>
+    )
+}
