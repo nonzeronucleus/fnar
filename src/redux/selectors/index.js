@@ -30,3 +30,5 @@ export const getBuilding = createSelector(
     getDoorways,
     doorways => getRoomsWithDoors(doorways)
 )
+
+export const getGameState = ({gameState}) => gameState;
