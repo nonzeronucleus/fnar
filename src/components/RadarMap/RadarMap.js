@@ -10,7 +10,7 @@ import styled from 'styled-components';
 const RadarMap = styled.div`
     position:absolute;
     top:0px;
-    left:600px;
+    left:800px;
     z-index:5;
 `;
 
@@ -29,15 +29,15 @@ export default () => {
   const MAP = {
       name: "my-map",
       areas: [
-        { name: rooms.CORRIDOR, shape: "poly", coords: [87,30,	156,	30,	156,	210,	396,	210,	396,	276,	87,	276],  fillColor: "blue"  },
-        { name: rooms.DINING_ROOM, shape: "rect", coords: [174,	30,	396,	195],  fillColor: "blue"  },
-        { name: rooms.KITCHEN, shape: "rect", coords: [405,	30,	597,	96],  fillColor: "blue"  },
-        { name: rooms.TOILET, shape: "rect", coords: [408,	105,	501,	342],  fillColor: "blue"  },
-        { name: rooms.FUSION_COVE, shape: "rect", coords: [6,	72,	75,	195], fillColor: "blue"  },
-        { name: rooms.LEFT_HALL, shape: "rect", coords: [87,	285,	168,	474], fillColor: "blue"  },
-        { name: rooms.RIGHT_HALL, shape: "rect", coords: [318,	282,	399,	468], fillColor: "blue"  }
+        { name: rooms.CORRIDOR, shape: "poly", coords: [ 58,20,104,20,104,140,264,140,264,184,58,184],fillColor: "blue" },
+        { name: rooms.DINING_ROOM, shape: "rect", coords: [ 116,20,264,130],fillColor: "blue" },
+        { name: rooms.KITCHEN, shape: "rect", coords: [ 270,20,398,64],fillColor: "blue" },
+        { name: rooms.TOILET, shape: "rect", coords: [ 272,70,334,228],fillColor: "blue" },
+        { name: rooms.FUSION_COVE, shape: "rect", coords: [ 4,48,50,130],fillColor: "blue" },
+        { name: rooms.LEFT_HALL, shape: "rect", coords: [ 58,190,112,316],fillColor: "blue" },
+        { name: rooms.RIGHT_HALL, shape: "rect", coords: [ 212,188,266,312],fillColor: "blue" },
       ]
     }
 
-    return (<RadarMap><ImageMapper onClick={(e) => playing && updateRadar(e)} src={map} width={600} map={MAP}/></RadarMap>)
+    return (<RadarMap><ImageMapper onClick={(e) => playing && updateRadar(e)} src={map} width={400} map={MAP}/></RadarMap>)
 }
