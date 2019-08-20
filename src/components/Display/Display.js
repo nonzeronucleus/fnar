@@ -5,6 +5,7 @@ import Office from '../Office';
 import rooms from '../../consts/rooms';
 import {getSelectedRoom, getCharactersInSelectedRoom} from '../../redux/selectors';
 import Monitor from '../Monitor';
+import DisplayToggle from '../DisplayToggle';
 
 const Display = styled.div`
     width:1600px;
@@ -22,10 +23,15 @@ const Middle = () => {
 
       const {room, charactersInRoom} = useMappedState(mapState);
 
-      return (room === rooms.OFFICE
+      return (
+        <>
+          {room === rooms.OFFICE
                 ? <Office/>
                 : <Monitor {...{room, charactersInRoom}} />
-            )
+          }
+          <DisplayToggle />
+        </>
+      )
 }
 
 
