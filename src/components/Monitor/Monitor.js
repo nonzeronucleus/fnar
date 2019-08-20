@@ -5,6 +5,7 @@ import {getSelectedRoom, getCharactersInSelectedRoom} from '../../redux/selector
 import roomImages from '../../img/rooms';
 import characterImages from '../../img/characters'
 import RadarMap from '../RadarMap';
+import cameraImage from '../../img/rooms/camera-effect.gif'
 
 const swing = keyframes`
     from {text-indent : -400px;}
@@ -38,6 +39,16 @@ const RoomImg = styled.img`
   z-index: 2;
 `;
 
+const CameraImage = styled.img`
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:1600px;
+    height:768px;
+    z-index:3;
+    opacity:0.8;
+`;
+
 
 const CharacterImg = styled.img`
     position: relative;
@@ -60,6 +71,7 @@ export default () => {
     return (
         <>
             <Frame>
+                <CameraImage src={cameraImage} />
                 <RadarMap />
                 <Container>
                     <RoomImg src={roomImages[room]} role="presentation" alt="" id="room"/>
