@@ -1,23 +1,35 @@
 import React, { useState } from 'react';
-import styled  from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
+
+const entry = keyframes`
+    from {
+        transform: rotateX(-90deg);
+        transform-origin: top;
+    }
+    to {
+        transform: rotateX(0);
+        transform-origin: top;
+    }
+`;
 
 const Frame = styled.div`
     width:1200px;
     height:768px;
     overflow: hidden;
 
-    background-color:blue;
+    /* background-color:blue; */
     transition: text-indent 1s;
 `;
 
 
 
 const Inner = styled.div`
+     animation: ${entry} 0.2s;
     position:absolute;
     width:1600px;
     height:768px;
-    background-color:yellow;
+    /* background-color:yellow; */
     left:0px;
     top:0px;
 
@@ -59,7 +71,7 @@ export default ({scroll, children}) => {
         >
             <Inner left={pos} >
                 {children}
-            </Inner>>
+            </Inner>
         </Frame>
     );
 }

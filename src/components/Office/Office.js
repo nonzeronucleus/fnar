@@ -8,14 +8,16 @@ import Scroller from './Scroller';
 import Door from './Door';
 import rooms from '../../consts/rooms'
 
+
+
 const BackgroundDisplay = styled.img`
     position:absolute;
     width:100%;
     height:100%;
-    background-color:pink;
-    left:10px;
-    top:10px;
 `;
+
+
+
 
 
 

@@ -7,6 +7,19 @@ import characterImages from '../../img/characters'
 import RadarMap from '../RadarMap';
 import cameraImage from '../../img/rooms/camera-effect.gif'
 
+
+
+const entry = keyframes`
+    from {
+        transform: rotateX(-90deg);
+        transform-origin: bottom;
+    }
+    to {
+        transform: rotateX(0);
+        transform-origin: bottom;
+    }
+`;
+
 const swing = keyframes`
     from {text-indent : -400px;}
     to {text-indent : 0px;}
@@ -19,10 +32,14 @@ const Frame = styled.div`
     overflow: hidden;
     /* text-indent: ${props => props.pos}px; */
     background-color:blue;
-    transition: text-indent 1s;
-    animation: ${swing} 8s ease-in-out infinite;
+    /* transition: text-indent 1s; */
+    animation: ${entry} 0.2s, ${swing} 8s ease-in-out infinite;
     animation-direction: alternate;
     position:absolute;
+    /* transform: scale(2); */
+    /* transition: transform 2.8s; */
+    /* transition: all 1s; */
+    transform-style: preserve-3d;
 `;
 
 const Container = styled.div`
