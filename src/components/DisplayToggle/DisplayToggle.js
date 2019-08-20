@@ -1,7 +1,7 @@
 import React  from 'react';
-// import {useDispatch} from 'redux-react-hook';
+import {useDispatch} from 'redux-react-hook';
 import styled from 'styled-components';
-// import * as actions from '../../redux/actions';
+import * as actions from '../../redux/actions';
 
 const DisplayToggle = styled.div`
     width: 400px;
@@ -34,9 +34,9 @@ const InnerLine = styled.div`
 
 
 export default () => {
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
-    // const toggleDoor = isOpen => dispatch(actions.toggleDoor({room, isOpen}))
+    const toggle = () => dispatch(actions.toggleCamera())
 
     // const mapState = useCallback(
     //     state => ({
@@ -47,5 +47,5 @@ export default () => {
 
     //   const {room, charactersInRoom} = useMappedState(mapState);
 
-    return <DisplayToggle><InnerLine top={4} /><InnerLine top={12} /></DisplayToggle>
+    return <DisplayToggle onClick={toggle}><InnerLine top={4} /><InnerLine top={12} /></DisplayToggle>
 }

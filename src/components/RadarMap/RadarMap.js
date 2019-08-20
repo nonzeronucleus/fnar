@@ -5,10 +5,14 @@ import map from './img/map.png'
 import ImageMapper from 'react-image-mapper';
 import * as actions from '../../redux/actions';
 import rooms from '../../consts/rooms'
+import styled from 'styled-components';
 
-
-// const clicked =area => console.log(area.name)
-
+const RadarMap = styled.div`
+    position:absolute;
+    top:0px;
+    left:600px;
+    z-index:5;
+`;
 
 export default () => {
   const dispatch = useDispatch()
@@ -22,20 +26,18 @@ export default () => {
 
   const {playing} = useMappedState(mapState);
 
-
   const MAP = {
       name: "my-map",
       areas: [
-        { name: rooms.CORRIDOR, shape: "poly", coords: [29,10,52,10,52,70,132,70,132,92, 29,92],  fillColor: "blue"  },
-        { name: rooms.DINING_ROOM, shape: "rect", coords: [58,10,132,65],  fillColor: "blue"  },
-        { name: rooms.KITCHEN, shape: "rect", coords: [135,10,199,32],  fillColor: "blue"  },
-        { name: rooms.TOILET, shape: "rect", coords: [136,35,167,114],  fillColor: "blue"  },
-        { name: rooms.FUSION_COVE, shape: "rect", coords: [2,24,25,65], fillColor: "blue"  },
-        { name: rooms.LEFT_HALL, shape: "rect", coords: [29,95,56,158], fillColor: "blue"  },
-        { name: rooms.RIGHT_HALL, shape: "rect", coords: [106,94,133,156], fillColor: "blue"  },
-        { name: rooms.OFFICE, shape: "rect", coords: [59,120,103,166], fillColor: "blue"  },
+        { name: rooms.CORRIDOR, shape: "poly", coords: [87,30,	156,	30,	156,	210,	396,	210,	396,	276,	87,	276],  fillColor: "blue"  },
+        { name: rooms.DINING_ROOM, shape: "rect", coords: [174,	30,	396,	195],  fillColor: "blue"  },
+        { name: rooms.KITCHEN, shape: "rect", coords: [405,	30,	597,	96],  fillColor: "blue"  },
+        { name: rooms.TOILET, shape: "rect", coords: [408,	105,	501,	342],  fillColor: "blue"  },
+        { name: rooms.FUSION_COVE, shape: "rect", coords: [6,	72,	75,	195], fillColor: "blue"  },
+        { name: rooms.LEFT_HALL, shape: "rect", coords: [87,	285,	168,	474], fillColor: "blue"  },
+        { name: rooms.RIGHT_HALL, shape: "rect", coords: [318,	282,	399,	468], fillColor: "blue"  }
       ]
     }
 
-    return (<ImageMapper onClick={(e) => playing && updateRadar(e)} src={map} width={200} map={MAP}/>)
+    return (<RadarMap><ImageMapper onClick={(e) => playing && updateRadar(e)} src={map} width={600} map={MAP}/></RadarMap>)
 }

@@ -2,8 +2,7 @@ import React, {useCallback}  from 'react';
 import {useMappedState} from 'redux-react-hook';
 import styled from 'styled-components';
 import Office from '../Office';
-import rooms from '../../consts/rooms';
-import {getSelectedRoom, getCharactersInSelectedRoom} from '../../redux/selectors';
+import {getSelectedRoom, getCharactersInSelectedRoom, isShowingCamera} from '../../redux/selectors';
 import Monitor from '../Monitor';
 import DisplayToggle from '../DisplayToggle';
 
@@ -17,17 +16,18 @@ const Middle = () => {
     const mapState = useCallback(
         state => ({
           room: getSelectedRoom(state),
-          charactersInRoom: getCharactersInSelectedRoom(state)
+          charactersInRoom: getCharactersInSelectedRoom(state),
+          showCamera: isShowingCamera(state),
         }), []
       );
 
-      const {room, charactersInRoom} = useMappedState(mapState);
+      const {room, charactersInRoom, showCamera} = useMappedState(mapState);
 
       return (
         <>
-          {room === rooms.OFFICE
-                ? <Office/>
-                : <Monitor {...{room, charactersInRoom}} />
+          {showCamera
+            ?  <Monitor {...{room, charactersInRoom}} />
+            : <Office/>
           }
           <DisplayToggle />
         </>

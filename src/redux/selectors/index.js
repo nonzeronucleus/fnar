@@ -38,3 +38,5 @@ export const isPlaying = createSelector(
     getGameState,
     gameState => gameState === gameStates.IN_PROGRESS
 )
+
+export const isShowingCamera = ({showingCamera}) => showingCamera;

@@ -4,5 +4,4 @@ import rooms from '../../consts/rooms';
 
 export default createReducer({
   [actions.selectRoom]: (state, payload) => payload,
-  [actions.loseGame]: () => rooms.OFFICE // If game over, go back to office
-}, rooms.OFFICE);
+}, rooms.DINING_ROOM);
