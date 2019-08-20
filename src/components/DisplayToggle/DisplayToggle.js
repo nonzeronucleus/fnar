@@ -1,7 +1,10 @@
-import React  from 'react';
+import React, {useCallback} from 'react';
+import {useMappedState} from 'redux-react-hook';
 import {useDispatch} from 'redux-react-hook';
 import styled from 'styled-components';
 import * as actions from '../../redux/actions';
+import {isPlaying} from '../../redux/selectors';
+
 
 const DisplayToggle = styled.div`
     width: 400px;
@@ -34,9 +37,17 @@ const InnerLine = styled.div`
 
 
 export default () => {
+    const mapState = useCallback(
+      state => ({
+        playing: isPlaying(state),
+      }), []
+    );
+
+    const {playing} = useMappedState(mapState);
+
     const dispatch = useDispatch()
 
-    const toggle = () => dispatch(actions.toggleCamera())
+    const toggle = () => {playing && dispatch(actions.toggleCamera())};
 
     // const mapState = useCallback(
     //     state => ({
