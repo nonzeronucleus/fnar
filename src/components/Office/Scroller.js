@@ -27,12 +27,12 @@ const Inner = styled.div`
 `;
 
 
-export default ({children}) => {
+export default ({scroll, children}) => {
     const [pos, setPos] = useState(0);
     const [mouseInside, setMouseInside] = useState(false)
     const [mousePos, setMousePos] = useState({x:0,y:0});
 
-    if(mouseInside) {
+    if(mouseInside && scroll) {
         if (mousePos.x < 250) {
             if (pos !== 0) {
                 setPos(0)

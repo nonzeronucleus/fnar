@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import {useMappedState} from 'redux-react-hook';
 
 import styled from 'styled-components';
-import {getCharactersInRoom, isDoorOpen} from '../../redux/selectors';
+import {getCharactersInRoom, isDoorOpen, isPlaying} from '../../redux/selectors';
 import {useDispatch} from 'redux-react-hook';
 import doorClosed from '../../img/office/door-closed.png';
 import doorOpen from '../../img/office/door-open.png';
@@ -24,14 +24,15 @@ export default ({room, left}) => {
     state => ({
       charactersInRoom: getCharactersInRoom(state, room),
       open: isDoorOpen(state, room),
+      playing: isPlaying(state),
     }), [room]
   );
 
-  const {charactersInRoom, open} = useMappedState(mapState);
+  const {charactersInRoom, open, playing} = useMappedState(mapState);
 
   return <>
       {charactersInRoom.length > 0 && <Character character={charactersInRoom[0]} {...{left}} />}
 
-      <DoorDisplay {...{left}} src={open ? doorOpen: doorClosed} onClick={() => toggleDoor(!open)}/>
+      <DoorDisplay {...{left}} src={open ? doorOpen: doorClosed} onClick={() => playing && toggleDoor(!open)}/>
     </>
 }

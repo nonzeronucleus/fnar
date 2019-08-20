@@ -1,4 +1,5 @@
 import { put, select } from 'redux-saga/effects';
+import rooms from '../../consts/rooms'
 import { getCharacterLocations, getBuilding } from '../selectors';
 import * as actions from '../actions';
 
@@ -15,6 +16,11 @@ export function* move() {
 
 
     const newLocationId = Math.floor((Math.random() * exits.length));
+    const to = exits[newLocationId]
 
-    yield put(actions.moveEnemy({character:charToMove.character, to:exits[newLocationId]}))
+    yield put(actions.moveEnemy({character:charToMove.character, to}))
+
+    if (to === rooms.OFFICE) {
+        yield put(actions.loseGame())
+    }
 }

@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect'
 import characters from '../../consts/characters';
 import getRoomsWithDoors from './getRoomsWithDoors';
+import gameStates from '../../consts/gameStates'
 
 export const getCharacterLocations = ({locations}) => {
     return Object.values(characters).map(character => ({character:character, location:locations.get(character)}))
@@ -32,3 +33,8 @@ export const getBuilding = createSelector(
 )
 
 export const getGameState = ({gameState}) => gameState;
+
+export const isPlaying = createSelector(
+    getGameState,
+    gameState => gameState === gameStates.IN_PROGRESS
+)
