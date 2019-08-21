@@ -13,7 +13,8 @@ export const getCharactersInRoom = ({locations}, room) => Object.keys(locations.
 
 const pad = num => num < 10 ? "0"+num : ""+ num
 
-export const getTime = ({time}) => {
+export const getTime = ({tickCount}) => {
+    const time = tickCount *10;
     var hour = 10+Math.floor(time/60);
     var mins = time % 60;
 
@@ -22,6 +23,8 @@ export const getTime = ({time}) => {
     }
     return pad(hour)+":"+pad(mins);
 }
+
+export const getCurrentTick =({tickCount}) => tickCount;
 
 export const isDoorOpen = ({officeDoors}, door) => officeDoors[door];
 

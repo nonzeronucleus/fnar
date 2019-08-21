@@ -10,7 +10,7 @@ export function* start() {
     while (gameState === gameStates.IN_PROGRESS) {
         console.log(gameState)
         yield put(actions.tick());
-        yield delay(10000);
+        yield delay(5000);
         gameState = yield select(getGameState);
     }
 }
