@@ -25,6 +25,8 @@ export const getTime = ({time}) => {
 
 export const isDoorOpen = ({officeDoors}, door) => officeDoors[door];
 
+export const getPowerUsage = ({officeDoors}) => Object.values(officeDoors).filter(doorOpen => !doorOpen).length;
+
 const getDoorways = ({doorways}) => doorways
 
 export const getBuilding = createSelector(
@@ -40,3 +42,5 @@ export const isPlaying = createSelector(
 )
 
 export const isShowingCamera = ({showingCamera}) => showingCamera;
+
+export const getPower = ({power}) => power;

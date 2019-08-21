@@ -7,6 +7,7 @@ import officeDoors from './officeDoors'
 import doorways from './doorways';
 import gameState from './gameState';
 import showingCamera from './showingCamera';
+import power from './power';
 
 export default combineReducers({
   tickCount,
@@ -16,5 +17,6 @@ export default combineReducers({
   officeDoors,
   doorways,
   gameState,
-  showingCamera
+  showingCamera,
+  power
 });

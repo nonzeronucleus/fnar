@@ -4,6 +4,7 @@ import {StoreContext} from 'redux-react-hook';
 import Display from './components/Display';
 import CharacterLocationList from './components/CharacterLocationList';
 import Time from './components/Time'
+import PowerMeter from './components/PowerMeter';
 const store = createStore();
 
 
@@ -14,6 +15,7 @@ function App() {
       <Display />
       <CharacterLocationList />
       <Time />
+      <PowerMeter />
     </StoreContext.Provider>
   );
 }

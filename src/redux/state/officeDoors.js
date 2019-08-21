@@ -9,7 +9,8 @@ const doorIsOpen = currentRoom => createReducer({
         return room === currentRoom
             ? isOpen
             : state
-    }
+    },
+    [actions.disablePower]: () => true
 }, true);
 
 export default combineReducers({

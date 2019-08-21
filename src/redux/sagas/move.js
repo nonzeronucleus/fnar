@@ -1,6 +1,6 @@
 import { put, select } from 'redux-saga/effects';
 import rooms from '../../consts/rooms'
-import { getCharacterLocations, getBuilding } from '../selectors';
+import { getCharacterLocations, getBuilding, getPowerUsage, getPower } from '../selectors';
 import * as actions from '../actions';
 
 export function* move() {
@@ -22,5 +22,18 @@ export function* move() {
 
     if (to === rooms.OFFICE) {
         yield put(actions.loseGame())
+    }
+
+    const powerUsage = yield select(getPowerUsage);
+
+    console.log(powerUsage);
+
+    if (powerUsage>0) {
+        yield put(actions.usePower(powerUsage));
+    }
+
+    const power = yield select(getPower);
+    if (power <= 0) {
+        yield put(actions.disablePower())
     }
 }
