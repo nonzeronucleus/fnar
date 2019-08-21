@@ -18,6 +18,8 @@ const Frame = styled.div`
     height:768px;
     overflow: hidden;
     position:absolute;
+    top:0px;
+    left:0px;
 
     /* background-color:blue; */
     transition: text-indent 1s;

@@ -3,7 +3,7 @@ import {useMappedState} from 'redux-react-hook';
 import {useDispatch} from 'redux-react-hook';
 import styled from 'styled-components';
 import * as actions from '../../redux/actions';
-import {isPlaying} from '../../redux/selectors';
+import {isPlaying, getPower} from '../../redux/selectors';
 
 
 const DisplayToggle = styled.div`
@@ -40,23 +40,16 @@ export default () => {
     const mapState = useCallback(
       state => ({
         playing: isPlaying(state),
+        power: getPower(state),
+
       }), []
     );
 
-    const {playing} = useMappedState(mapState);
+    const {playing, power} = useMappedState(mapState);
 
     const dispatch = useDispatch()
 
-    const toggle = () => {playing && dispatch(actions.toggleCamera())};
-
-    // const mapState = useCallback(
-    //     state => ({
-    //       room: getSelectedRoom(state),
-    //       charactersInRoom: getCharactersInSelectedRoom(state)
-    //     }), []
-    //   );
-
-    //   const {room, charactersInRoom} = useMappedState(mapState);
+    const toggle = () => {playing && power && dispatch(actions.toggleCamera())};
 
     return <DisplayToggle onClick={toggle}><InnerLine top={4} /><InnerLine top={12} /></DisplayToggle>
 }

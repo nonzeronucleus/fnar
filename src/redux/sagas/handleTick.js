@@ -1,7 +1,17 @@
 import { put, select } from 'redux-saga/effects';
 import rooms from '../../consts/rooms'
-import { getCharacterLocations, getBuilding, getPowerUsage, getPower } from '../selectors';
+import { getCharacterLocations, getBuilding, getPowerUsage, getPower, getCurrentTick } from '../selectors';
 import * as actions from '../actions';
+
+
+function* checkTime() {
+    const tickCount = yield select(getCurrentTick);
+
+    if (tickCount >= 48) { // 6:00 AM
+        yield put(actions.winGame())
+    }
+}
+
 
 function* moveCharacater() {
     const chars = yield select(getCharacterLocations);
@@ -37,6 +47,8 @@ function* checkPowerUsage() {
 }
 
 export function* handleTick() {
+    yield checkTime();
+
     yield moveCharacater()
 
     yield checkPowerUsage();

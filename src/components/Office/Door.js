@@ -12,7 +12,7 @@ import * as actions from '../../redux/actions';
 const DoorDisplay = styled.img`
     position:absolute;
     left: ${props => props.left}px;
-    top: 240px;
+    top: 252px;
 `;
 
 export default ({room, left}) => {

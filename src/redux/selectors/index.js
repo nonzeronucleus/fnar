@@ -28,7 +28,15 @@ export const getCurrentTick =({tickCount}) => tickCount;
 
 export const isDoorOpen = ({officeDoors}, door) => officeDoors[door];
 
-export const getPowerUsage = ({officeDoors}) => Object.values(officeDoors).filter(doorOpen => !doorOpen).length;
+export const getPowerUsage = ({officeDoors, showingCamera}) => {
+    const getDoorUsage = officeDoors => Object.values(officeDoors).filter(doorOpen => !doorOpen).length * 4;
+
+    const getCameraUsage = showingCamera => showingCamera ? 2 : 0;
+
+    return getDoorUsage(officeDoors)+ getCameraUsage(showingCamera);
+}
+
+
 
 const getDoorways = ({doorways}) => doorways
 
