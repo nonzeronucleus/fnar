@@ -14,13 +14,10 @@ export const getCharactersInRoom = ({locations}, room) => Object.keys(locations.
 const pad = num => num < 10 ? "0"+num : ""+ num
 
 export const getTime = ({tickCount}) => {
-    const time = tickCount *10;
-    var hour = 10+Math.floor(time/60);
+    const time = tickCount;
+    var hour = Math.floor(time/60);
     var mins = time % 60;
 
-    if(hour>12) {
-        hour-=12;
-    }
     return pad(hour)+":"+pad(mins);
 }
 
@@ -29,11 +26,12 @@ export const getCurrentTick =({tickCount}) => tickCount;
 export const isDoorOpen = ({officeDoors}, door) => officeDoors[door];
 
 export const getPowerUsage = ({officeDoors, showingCamera}) => {
-    const getDoorUsage = officeDoors => Object.values(officeDoors).filter(doorOpen => !doorOpen).length * 4;
 
-    const getCameraUsage = showingCamera => showingCamera ? 2 : 0;
+    const getDoorUsage = officeDoors => Object.values(officeDoors).filter(doorOpen => !doorOpen).length * 5;
 
-    return getDoorUsage(officeDoors)+ getCameraUsage(showingCamera);
+    const getCameraUsage = showingCamera => showingCamera ? 1 : 0;
+
+    return (getDoorUsage(officeDoors)+ getCameraUsage(showingCamera));
 }
 
 
@@ -54,4 +52,4 @@ export const isPlaying = createSelector(
 
 export const isShowingCamera = ({showingCamera}) => showingCamera;
 
-export const getPower = ({power}) => power;
+export const getPower = ({power}) => Math.floor(power/10);

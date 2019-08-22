@@ -7,13 +7,17 @@ import * as actions from '../actions';
 function* checkTime() {
     const tickCount = yield select(getCurrentTick);
 
-    if (tickCount >= 48) { // 6:00 AM
+    if (tickCount >= 360) { // 6:00 AM
         yield put(actions.winGame())
     }
 }
 
 
 function* moveCharacater() {
+    const tickCount = yield select(getCurrentTick);
+
+    if (tickCount % 10 !==9) return;
+
     const chars = yield select(getCharacterLocations);
     const numChars = Object.keys(chars).length;
     const charToMoveId = Math.floor((Math.random() * numChars))

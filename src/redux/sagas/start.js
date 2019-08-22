@@ -9,7 +9,7 @@ export function* start() {
 
     while (gameState === gameStates.IN_PROGRESS) {
         yield put(actions.tick());
-        yield delay(5000);
+        yield delay(1000);
         gameState = yield select(getGameState);
     }
 }
