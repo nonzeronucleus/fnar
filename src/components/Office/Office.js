@@ -37,8 +37,6 @@ export default ({pos}) => {
       );
 
     const {charactersInRoom, currentGameSate} = useMappedState(mapState);
-    console.log(currentGameSate)
-
     return (
         <>
             <HUD>

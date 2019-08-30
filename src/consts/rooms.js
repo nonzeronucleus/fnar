@@ -8,5 +8,6 @@ export default {
  KITCHEN: 'kitchen',
  TOILET: 'toilet',
  LEFT_DOOR: 'left door',
- RIGHT_DOOR: 'right door'
+ RIGHT_DOOR: 'right door',
 }
+

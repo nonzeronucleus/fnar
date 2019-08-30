@@ -1,32 +1,58 @@
 import { put, select } from 'redux-saga/effects';
 import rooms from '../../consts/rooms'
+import releaseButtons from '../../consts/releaseButtons';
+
 import { getCharacterLocations, getBuilding, getPowerUsage, getPower, getCurrentTick } from '../selectors';
 import * as actions from '../actions';
 
+const ticksPerHour = 60
+const ticksPerMove = 10;
+const endTime = ticksPerHour * 6; // Finishes at 6:00 AM
 
 function* checkTime() {
     const tickCount = yield select(getCurrentTick);
 
-    if (tickCount >= 360) { // 6:00 AM
+    if (tickCount >= endTime) { // 6:00 AM
         yield put(actions.winGame())
     }
 }
 
 
-function* moveCharacater() {
+function* checkMove() {
     const tickCount = yield select(getCurrentTick);
 
-    if (tickCount % 10 !==9) return;
+    if (tickCount % ticksPerMove !==(ticksPerMove -1)) return; // Don't move except on last tick
 
+    yield handleCharacterAction();
+}
+
+
+function *pickCharacterToMove() {
     const chars = yield select(getCharacterLocations);
     const numChars = Object.keys(chars).length;
     const charToMoveId = Math.floor((Math.random() * numChars))
-    const charToMove = chars[charToMoveId];
+    return chars[charToMoveId];
+}
+
+const getReleaseButton = room => releaseButtons[room]
+
+
+function* handleCharacterAction() {
+    const charToMove = yield pickCharacterToMove();
     const building = yield select(getBuilding);
 
-    const locations =  building[charToMove.location];
-    const exits = locations.exits;
+    const currentLocation =  building[charToMove.location];
+    const releaseButton = getReleaseButton(charToMove.location);
 
+    if (releaseButton && Math.random() < 10.9) {
+        yield put(actions.pressDoorRelease(releaseButton))
+    }
+    else {
+        yield moveCharacter(charToMove, currentLocation.exits);
+    }
+}
+
+function *moveCharacter(charToMove, exits) {
     const newLocationId = Math.floor((Math.random() * exits.length));
     const to = exits[newLocationId]
 
@@ -53,7 +79,7 @@ function* checkPowerUsage() {
 export function* handleTick() {
     yield checkTime();
 
-    yield moveCharacater()
+    yield checkMove();
 
     yield checkPowerUsage();
 }

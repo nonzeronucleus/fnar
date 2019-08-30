@@ -16,8 +16,8 @@ const getInitLocations = () => {
   return Immutable.Map(o);
 };
 
-const locations = createReducer({
+export default createReducer({
   [actions.moveEnemy]: (state, payload) => state.set(payload.character, payload.to)
 }, getInitLocations());
 
-export default locations;
+// export default locations;

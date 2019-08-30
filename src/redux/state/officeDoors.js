@@ -3,7 +3,6 @@ import { createReducer } from 'redux-act';
 import * as actions from '../actions';
 import rooms from '../../consts/rooms';
 
-
 const doorIsOpen = currentRoom => createReducer({
     [actions.toggleDoor]: (state, {room, isOpen}) => {
         return room === currentRoom
