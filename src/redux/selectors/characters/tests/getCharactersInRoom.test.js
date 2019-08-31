@@ -5,11 +5,11 @@ import getCharactersInRoom from '../getCharactersInRoom';
 
 it("returns characters found in room", () => {
     const characterLocations = Immutable.Map({
-        [ characters.RAINBA]: rooms.CORRIDOR,
+        [ characters.RAINBA]: rooms.LEFT_CORRIDOR,
         [ characters.MINTY] : rooms.DINING_ROOM,
         [ characters.GINGER] : rooms.FUSION_COVE,
         [ characters.MERWING ]: rooms.FUSION_COVE,
-        [ characters.PORKIE ]: rooms.CORRIDOR
+        [ characters.PORKIE ]: rooms.LEFT_CORRIDOR
 
     })
 
@@ -21,11 +21,11 @@ it("returns characters found in room", () => {
 
 it("returns empty array if nothing in room", () => {
     const characterLocations = Immutable.Map({
-        [ characters.RAINBA]: rooms.CORRIDOR,
+        [ characters.RAINBA]: rooms.LEFT_CORRIDOR,
         [ characters.MINTY] : rooms.DINING_ROOM,
         [ characters.GINGER] : rooms.FUSION_COVE,
         [ characters.MERWING ]: rooms.FUSION_COVE,
-        [ characters.PORKIE ]: rooms.CORRIDOR
+        [ characters.PORKIE ]: rooms.LEFT_CORRIDOR
 
     })
 

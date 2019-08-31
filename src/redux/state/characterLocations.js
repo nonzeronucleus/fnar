@@ -6,11 +6,11 @@ import * as actions from '../actions';
 
 const getInitLocations = () => {
   const o = {
-    [ characters.RAINBA]: rooms.RIGHT_CORRIDOR,
+    [ characters.RAINBA]: rooms.DINING_ROOM,
     [ characters.MINTY] : rooms.DINING_ROOM,
-    [ characters.GINGER] : rooms.FUSION_COVE,
-    [ characters.MERWING ]: rooms.TOILET,
-    [ characters.PORKIE ]: rooms.CORRIDOR
+    [ characters.GINGER] : rooms.DINING_ROOM,
+    [ characters.MERWING ]: rooms.FUSION_COVE,
+    [ characters.PORKIE ]: rooms.DINING_ROOM
 
   }
   return Immutable.Map(o);
