@@ -1,6 +1,6 @@
 import rooms from '../../consts/rooms';
 
-import leftCorridor from './corridor2.gif';
+import leftCorridor from './portal.jpg';
 import rightCorridor from './corridor.jpg';
 import diningRoom from './dining room.jpg';
 import fusionCove from './fusion cove.jpg';
