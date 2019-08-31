@@ -2,7 +2,11 @@ import { createSelector } from 'reselect'
 import characters from '../../consts/characters';
 import getRoomsWithDoors from './getRoomsWithDoors';
 import gameStates from '../../consts/gameStates'
-import releaseButtons from '../../consts/releaseButtons';
+export {default as isDoorReleaseTriggered } from './doorReleaseExpiryTimes/isDoorReleaseTriggered';
+export {default as getExpiredDoorReleases } from './doorReleaseExpiryTimes/getExpiredDoorReleases';
+export {default as getCharactersInRoom} from './characters/getCharactersInRoom';
+export {default as getCharactersInSelectedRoom} from './characters/getCharactersInSelectedRoom';
+export {default as getPower } from './power/getPower';
 
 export const getCharacterLocations = ({characterLocations}) => {
     return Object.values(characters).map(character => ({character:character, location:characterLocations.get(character)}))
@@ -10,13 +14,6 @@ export const getCharacterLocations = ({characterLocations}) => {
 
 export const getSelectedRoom = ({selectedRoom}) => selectedRoom;
 
-// Handle situation where a character is pressing one of the buttons (so is in a 'room' that isn't actually a room)
-const getActualRoom = room =>  releaseButtons[room] || room;
-
-export const getCharactersInRoom = ({characterLocations}, room) =>
-    Object.keys(characterLocations.filter(location => (getActualRoom(location) === room)).toJSON());
-
-export const getCharactersInSelectedRoom = ({selectedRoom,characterLocations}) => getCharactersInRoom({characterLocations}, selectedRoom)
 
 const pad = num => num < 10 ? "0"+num : ""+ num
 
@@ -56,6 +53,4 @@ export const isPlaying = createSelector(
 
 export const isShowingCamera = ({showingCamera}) => showingCamera;
 
-export const getPower = ({power}) => Math.floor(power/10);
 
-export const isDoorReleaseTriggered = ({doorRelease}, door) => doorRelease[door];

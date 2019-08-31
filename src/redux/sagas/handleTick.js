@@ -1,12 +1,13 @@
-import { put, select } from 'redux-saga/effects';
+import { put, select, all } from 'redux-saga/effects';
 import rooms from '../../consts/rooms'
 import releaseButtons from '../../consts/releaseButtons';
 
-import { getCharacterLocations, getBuilding, getPowerUsage, getPower, getCurrentTick } from '../selectors';
+import { getCharacterLocations, getBuilding, getPowerUsage, getCurrentTick, getExpiredDoorReleases, getPower } from '../selectors';
 import * as actions from '../actions';
 
 const ticksPerHour = 60
 const ticksPerMove = 10;
+
 const endTime = ticksPerHour * 6; // Finishes at 6:00 AM
 
 function* checkTime() {
@@ -76,8 +77,24 @@ function* checkPowerUsage() {
     }
 }
 
+function* checkDoorReleases() {
+    const expiredDoorReleases = yield select(getExpiredDoorReleases);
+
+    if (expiredDoorReleases === []) return;
+
+    yield all (expiredDoorReleases.map(release => {
+        // call(console.log({release}))
+        // // console.log(release);
+        return put(actions.toggleDoorRelease({releases:release}))
+    }))
+
+
+}
+
 export function* handleTick() {
     yield checkTime();
+
+    yield checkDoorReleases();
 
     yield checkMove();
 
