@@ -29,7 +29,9 @@ export default () => {
   const MAP = {
       name: "my-map",
       areas: [
-        { name: rooms.CORRIDOR, shape: "poly", coords: [ 58,20,104,20,104,140,264,140,264,184,58,184],fillColor: "blue" },
+        // { name: rooms.LEFT_CORRIDOR, shape: "poly", coords: [ 58,20,104,20,104,140,264,140,264,184,58,184],fillColor: "blue" },
+        { name: rooms.LEFT_CORRIDOR, shape: "rect", coords: [ 58,20,104,184],fillColor: "blue" },
+        { name: rooms.RIGHT_CORRIDOR, shape: "rect", coords: [ 104, 140, 264, 184],fillColor: "blue" },
         { name: rooms.DINING_ROOM, shape: "rect", coords: [ 116,20,264,130],fillColor: "blue" },
         { name: rooms.KITCHEN, shape: "rect", coords: [ 270,20,398,64],fillColor: "blue" },
         { name: rooms.TOILET, shape: "rect", coords: [ 272,70,334,228],fillColor: "blue" },

@@ -6,7 +6,7 @@ import * as actions from '../actions';
 
 const getInitLocations = () => {
   const o = {
-    [ characters.RAINBA]: rooms.CORRIDOR,
+    [ characters.RAINBA]: rooms.RIGHT_CORRIDOR,
     [ characters.MINTY] : rooms.DINING_ROOM,
     [ characters.GINGER] : rooms.FUSION_COVE,
     [ characters.MERWING ]: rooms.TOILET,
