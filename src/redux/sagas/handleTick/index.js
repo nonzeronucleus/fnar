@@ -24,7 +24,7 @@ function* checkMove() {
 
     if (tickCount % ticksPerMove !==(ticksPerMove -1)) return; // Don't move except on last tick
 
-    yield handleCharacterAction();
+    // yield handleCharacterAction();
 }
 
 

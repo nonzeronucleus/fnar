@@ -2,8 +2,8 @@ import { createSelector } from 'reselect'
 import characters from '../../consts/characters';
 import getRoomsWithDoors from './getRoomsWithDoors';
 import gameStates from '../../consts/gameStates'
-export {default as isDoorReleaseTriggered } from './doorReleaseExpiryTimes/isDoorReleaseTriggered';
-export {default as getExpiredDoorReleases } from './doorReleaseExpiryTimes/getExpiredDoorReleases';
+export {default as isDoorReleaseTriggered } from './doorReleases/isDoorReleaseTriggered';
+export {default as getExpiredDoorReleases } from './doorReleases/getExpiredDoorReleases';
 export {default as getCharactersInRoom} from './characters/getCharactersInRoom';
 export {default as getCharactersInSelectedRoom} from './characters/getCharactersInSelectedRoom';
 export {default as getPower } from './power/getPower';

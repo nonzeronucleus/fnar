@@ -6,7 +6,8 @@ import roomImages from '../../img/rooms';
 import characterImages from '../../img/characters'
 import RadarMap from '../RadarMap';
 import cameraImage from '../../img/rooms/camera-effect.gif'
-
+import roomHasDoorRelease from './roomHasDoorRelease';
+import switchImage from '../../img/switch/switch-off.png';
 
 
 const entry = keyframes`
@@ -30,15 +31,10 @@ const Frame = styled.div`
     width:1200px;
     height:768px;
     overflow: hidden;
-    /* text-indent: ${props => props.pos}px; */
     background-color:blue;
-    /* transition: text-indent 1s; */
     animation: ${entry} 0.2s, ${swing} 8s ease-in-out infinite;
     animation-direction: alternate;
     position:absolute;
-    /* transform: scale(2); */
-    /* transition: transform 2.8s; */
-    /* transition: all 1s; */
     transform-style: preserve-3d;
 `;
 
@@ -70,8 +66,16 @@ const CameraImage = styled.img`
 const CharacterImg = styled.img`
     position: relative;
     top:0px;
-    left: ${props => props.pos*180}px;
+    /* left: ${props => props.pos*180}px; */
+    left:200px;
     z-index: 2;
+`;
+
+const SwitchImg = styled.img`
+    position: absolute;
+    top:400px;
+    left:400px;
+    z-index:4;
 `;
 
 
@@ -85,6 +89,8 @@ export default () => {
 
     const {room, charactersInRoom} = useMappedState(mapState);
 
+    console.log(roomHasDoorRelease(room));
+
     return (
         <>
             <Frame>
@@ -92,6 +98,7 @@ export default () => {
                 <RadarMap />
                 <Container>
                     <RoomImg src={roomImages[room]} role="presentation" alt="" id="room"/>
+                    {roomHasDoorRelease(room) && <SwitchImg src={switchImage} />}
                     { charactersInRoom.map( (character, i)  => {
                         return <CharacterImg src={characterImages[character]} key={i} role="presentation" alt="" id="room" pos={i}/>
                     })}
