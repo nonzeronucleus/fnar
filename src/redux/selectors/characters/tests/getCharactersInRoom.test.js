@@ -2,6 +2,8 @@ import Immutable from 'immutable';
 import characters from '../../../../consts/characters';
 import rooms from '../../../../consts/rooms';
 import getCharactersInRoom from '../getCharactersInRoom';
+import checkDoorReleases from '../../../sagas/handleTick/checkDoorReleases';
+
 
 it("returns characters found in room", () => {
     const characterLocations = Immutable.Map({

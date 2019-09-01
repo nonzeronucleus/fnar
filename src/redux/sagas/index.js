@@ -10,6 +10,4 @@ function* sagas() {
     yield takeLatest(actions.pressDoorRelease.getType(), handleDoorRelease);
 }
 
-
-
 export default sagas;
