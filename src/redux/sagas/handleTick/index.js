@@ -6,7 +6,7 @@ import checkPowerUsage from './checkPowerUsage';
 import handleCharacterAction from './handleCharacterAction';
 
 const ticksPerHour = 60
-const ticksPerMove = 1;
+const ticksPerMove = 20;
 
 const endTime = ticksPerHour * 6; // Finishes at 6:00 AM
 
@@ -24,7 +24,7 @@ function* checkMove() {
 
     if (tickCount % ticksPerMove !==(ticksPerMove -1)) return; // Don't move except on last tick
 
-    // yield handleCharacterAction();
+    yield handleCharacterAction();
 }
 
 
