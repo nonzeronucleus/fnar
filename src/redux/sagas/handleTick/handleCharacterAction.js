@@ -21,7 +21,7 @@ function* handleCharacterAction() {
     const currentLocation = building[charToMove.location];
     const releaseButton = getReleaseButton(charToMove.location);
     if (releaseButton && (Math.random() < 0.25)) {
-        yield put(actions.pressDoorRelease(releaseButton));
+        yield put(actions.pressDoorRelease({releases:releaseButton}));
     }
     else {
         yield moveCharacter(charToMove, currentLocation.exits);

@@ -31,6 +31,7 @@ export default () => {
         state => ({
           room: getSelectedRoom(state),
           charactersInRoom: getCharactersInSelectedRoom(state),
+        //   doorRelease: getDoorReleaseInRoom(state)
         }), []
     );
 
@@ -43,7 +44,7 @@ export default () => {
 
             <Scroller>
                 <RoomImg src={roomImages[room]} role="presentation" alt="" id="room"/>
-                {roomHasDoorRelease(room) && <DoorRelase />}
+                {roomHasDoorRelease(room) && <DoorRelase {...{room}} />}
                 { charactersInRoom.map( (character, i)  => {
                     return <CharacterImg {...{character}} key={i} role="presentation" alt="" id="room" pos={i}/>
                 })}

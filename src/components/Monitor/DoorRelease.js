@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import switchImage from '../../img/switch/switch-off.png';
+import switchImageOff from '../../img/switch/switch-off.png';
+// import switchImageOn from '../../img/switch/switch-on.png';
 
 const SwitchImg = styled.img`
     position: absolute;
@@ -9,4 +10,6 @@ const SwitchImg = styled.img`
     z-index:4;
 `;
 
-export default () => <SwitchImg src={switchImage} />
+export default () => {
+    return <SwitchImg src={switchImageOff} />
+}
