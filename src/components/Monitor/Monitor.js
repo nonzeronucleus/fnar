@@ -3,14 +3,12 @@ import {useMappedState} from 'redux-react-hook';
 import styled from 'styled-components';
 import {getSelectedRoom, getCharactersInSelectedRoom} from '../../redux/selectors';
 import roomImages from '../../img/rooms';
-import characterImages from '../../img/characters'
 import RadarMap from '../RadarMap';
 import cameraImage from '../../img/rooms/camera-effect.gif'
 import roomHasDoorRelease from './roomHasDoorRelease';
-import switchImage from '../../img/switch/switch-off.png';
 import Scroller from './Scroller'
-
-
+import DoorRelase from './DoorRelease';
+import CharacterImg from './CharacterImg';
 
 const RoomImg = styled.img`
   position: absolute;
@@ -27,22 +25,6 @@ const CameraImage = styled.img`
     z-index:3;
     opacity:0.6;
 `;
-
-
-const CharacterImg = styled.img`
-    position: absolute;
-    top:0px;
-    left: ${props => props.pos*180}px;
-    z-index: 2;
-`;
-
-const SwitchImg = styled.img`
-    position: absolute;
-    top:400px;
-    left:400px;
-    z-index:4;
-`;
-
 
 export default () => {
     const mapState = useCallback(
@@ -61,9 +43,9 @@ export default () => {
 
             <Scroller>
                 <RoomImg src={roomImages[room]} role="presentation" alt="" id="room"/>
-                {roomHasDoorRelease(room) && <SwitchImg src={switchImage} />}
+                {roomHasDoorRelease(room) && <DoorRelase />}
                 { charactersInRoom.map( (character, i)  => {
-                    return <CharacterImg src={characterImages[character]} key={i} role="presentation" alt="" id="room" pos={i}/>
+                    return <CharacterImg {...{character}} key={i} role="presentation" alt="" id="room" pos={i}/>
                 })}
             </Scroller>
         </>

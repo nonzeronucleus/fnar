@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with a character in the room 1`] = `
+Array [
+  <div>
+    A
+  </div>,
+  <img
+    className="sc-EHOje cgBQfU"
+    src="camera-effect.gif"
+  />,
+  <div
+    className="sc-bdVaJa fJRvkx"
+  >
+    <div
+      className="sc-bwzfXH cHplRP"
+    >
+      <img
+        alt=""
+        className="sc-ifAKCX dhCAyy"
+        id="room"
+        role="presentation"
+      />
+      <img
+        alt=""
+        className="sc-bxivhb iVyuZR"
+        id="room"
+        role="presentation"
+      />
+    </div>
+  </div>,
+]
+`;
+
+exports[`renders correctly with no characters in the room 1`] = `
+Array [
+  <div>
+    A
+  </div>,
+  <img
+    className="sc-EHOje cgBQfU"
+    src="camera-effect.gif"
+  />,
+  <div
+    className="sc-bdVaJa fJRvkx"
+  >
+    <div
+      className="sc-bwzfXH cHplRP"
+    >
+      <img
+        alt=""
+        className="sc-ifAKCX dhCAyy"
+        id="room"
+        role="presentation"
+      />
+    </div>
+  </div>,
+]
+`;
