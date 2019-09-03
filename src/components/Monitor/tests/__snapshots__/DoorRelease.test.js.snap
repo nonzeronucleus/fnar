@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly when active 1`] = `
+<img
+  className="sc-bdVaJa HzQda"
+  src="switch-on.png"
+/>
+`;
+
+exports[`renders correctly when not active 1`] = `
+<img
+  className="sc-bdVaJa HzQda"
+  src="switch-off.png"
+/>
+`;

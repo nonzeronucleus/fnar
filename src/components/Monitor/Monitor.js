@@ -1,11 +1,10 @@
 import React, {useCallback}  from 'react';
 import {useMappedState} from 'redux-react-hook';
 import styled from 'styled-components';
-import {getSelectedRoom, getCharactersInSelectedRoom} from '../../redux/selectors';
+import {getSelectedRoom, getCharactersInSelectedRoom, getDoorReleaseInSelectedRoom} from '../../redux/selectors';
 import roomImages from '../../img/rooms';
 import RadarMap from '../RadarMap';
 import cameraImage from '../../img/rooms/camera-effect.gif'
-import roomHasDoorRelease from './roomHasDoorRelease';
 import Scroller from './Scroller'
 import DoorRelase from './DoorRelease';
 import CharacterImg from './CharacterImg';
@@ -31,12 +30,11 @@ export default () => {
         state => ({
           room: getSelectedRoom(state),
           charactersInRoom: getCharactersInSelectedRoom(state),
-        //   doorRelease: getDoorReleaseInRoom(state)
+          doorRelease: getDoorReleaseInSelectedRoom(state)
         }), []
     );
 
-    const {room, charactersInRoom} = useMappedState(mapState);
-
+    const {room, charactersInRoom, doorRelease} = useMappedState(mapState);
     return (
         <>
             <RadarMap />
@@ -44,7 +42,7 @@ export default () => {
 
             <Scroller>
                 <RoomImg src={roomImages[room]} role="presentation" alt="" id="room"/>
-                {roomHasDoorRelease(room) && <DoorRelase {...{room}} />}
+                {doorRelease !==null && <DoorRelase active={doorRelease}/>}
                 { charactersInRoom.map( (character, i)  => {
                     return <CharacterImg {...{character}} key={i} role="presentation" alt="" id="room" pos={i}/>
                 })}

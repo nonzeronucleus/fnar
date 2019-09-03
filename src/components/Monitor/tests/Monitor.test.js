@@ -9,7 +9,9 @@ jest.mock('redux-react-hook', () => {
   }
 });
 
-jest.mock('../../RadarMap', () => ()=> (<div>A</div>))
+jest.mock('../../RadarMap', () => ()=> (<div>RadarMap</div>))
+jest.mock('../DoorRelease', () => ({active})=> (<div>Door Release: {active}</div>))
+
 
 it('renders correctly with a character in the room', () => {
 
@@ -17,7 +19,8 @@ it('renders correctly with a character in the room', () => {
     selectedRoom:"dining room",
     charactersInRoom:[
       "rainba"
-    ]
+    ],
+    doorRelease:null
   }))
 
   const tree = renderer
@@ -32,7 +35,8 @@ it('renders correctly with no characters in the room', () => {
   useMappedState.mockImplementation(() => ({
     selectedRoom:"dining room",
     charactersInRoom:[
-    ]
+    ],
+    doorRelease:null
   }))
 
   const tree = renderer

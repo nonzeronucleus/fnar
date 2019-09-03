@@ -4,6 +4,7 @@ import getRoomsWithDoors from './getRoomsWithDoors';
 import gameStates from '../../consts/gameStates'
 export {default as isDoorReleaseTriggered } from './doorReleases/isDoorReleaseTriggered';
 export {default as getExpiredDoorReleases } from './doorReleases/getExpiredDoorReleases';
+export {default as getDoorReleaseInSelectedRoom } from './doorReleases/getDoorReleaseInSelectedRoom';
 export {default as getCharactersInRoom} from './characters/getCharactersInRoom';
 export {default as getCharactersInSelectedRoom} from './characters/getCharactersInSelectedRoom';
 export {default as getPower } from './power/getPower';
