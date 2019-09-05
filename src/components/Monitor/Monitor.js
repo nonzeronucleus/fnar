@@ -19,7 +19,7 @@ const CameraImage = styled.img`
     position:absolute;
     top:0px;
     left:0px;
-    width:1600px;
+    width:1200px;
     height:768px;
     z-index:3;
     opacity:0.6;
