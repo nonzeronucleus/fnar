@@ -6,7 +6,7 @@ import officeDoors from './officeDoors'
 import doorways from './doorways';
 import gameState from './gameState';
 import showingCamera from './showingCamera';
-import doorReleaseExpiryTimes from './doorReleaseExpiryTimes';
+import doorReleases from './doorReleases';
 import power from './power';
 
 export default combineReducers({
@@ -18,5 +18,5 @@ export default combineReducers({
   gameState,
   showingCamera,
   power,
-  doorReleaseExpiryTimes
+  doorReleases
 });

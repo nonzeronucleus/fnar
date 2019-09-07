@@ -1,1 +1,1 @@
-export default ({ doorReleaseExpiryTimes }, door) => !!doorReleaseExpiryTimes[door];
+export default ({ doorReleases }, door) => !!doorReleases[door].expiryTime;
