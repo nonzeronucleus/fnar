@@ -1,14 +1,16 @@
 import isdoorReleaseTriggered from '../isdoorReleaseTriggered'
+import releaseButtonStatus from '../../../../consts/releaseButtonStatus'
+
 import doors from '../../../../consts/rooms'
 
 it("returns true only for trigered release", () => {
     const state = {
         doorReleases:{
             "left door": {
-                expiryTime: 10
+                status: releaseButtonStatus.enabled
             },
             "right door": {
-                expiryTime: null
+                status: releaseButtonStatus.disabled
             },
         }
     }
@@ -20,10 +22,10 @@ it("returns true for both if both trigered ", () => {
     const state = {
         doorReleases:{
             "left door": {
-                expiryTime: 10
+                status: releaseButtonStatus.enabled
             },
             "right door": {
-                expiryTime: 8
+                status: releaseButtonStatus.enabled
             },
         }
     }
@@ -35,10 +37,10 @@ it("returns false for both if neither trigered ", () => {
     const state = {
         doorReleases:{
             "left door": {
-                expiryTime: null
+                status: releaseButtonStatus.disabled
             },
             "right door": {
-                expiryTime: null
+                status: releaseButtonStatus.disabled
             },
         }
     }

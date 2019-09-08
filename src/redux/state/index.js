@@ -8,6 +8,7 @@ import gameState from './gameState';
 import showingCamera from './showingCamera';
 import doorReleases from './doorReleases';
 import power from './power';
+import timedActions from './timedActions';
 
 export default combineReducers({
   tickCount,
@@ -18,5 +19,6 @@ export default combineReducers({
   gameState,
   showingCamera,
   power,
-  doorReleases
+  doorReleases,
+  timedActions
 });

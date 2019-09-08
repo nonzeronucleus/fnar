@@ -1,12 +1,12 @@
-import { put, select } from 'redux-saga/effects';
-import {  getCurrentTick } from '../../selectors';
+import { put, select, all, call } from 'redux-saga/effects';
+import {  getCurrentTick, getTimedActions } from '../../selectors';
 import * as actions from '../../actions';
 import checkDoorReleases from './checkDoorReleases';
 import checkPowerUsage from './checkPowerUsage';
 import handleCharacterAction from './handleCharacterAction';
 
 const ticksPerHour = 60
-const ticksPerMove = 20;
+const ticksPerMove = 5;
 
 const endTime = ticksPerHour * 6; // Finishes at 6:00 AM
 
@@ -27,12 +27,20 @@ function* checkMove() {
     yield handleCharacterAction();
 }
 
+function* checkTimedActions() {
+    const timedActions = yield select(getTimedActions)
+
+    yield all(timedActions.map(action => put(action)))
+}
+
 
 
 
 
 export function* handleTick() {
     yield checkTime();
+
+    yield checkTimedActions();
 
     yield checkDoorReleases();
 

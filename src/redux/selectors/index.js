@@ -4,6 +4,7 @@ import getRoomsWithDoors from './getRoomsWithDoors';
 import gameStates from '../../consts/gameStates'
 export {default as isDoorReleaseTriggered } from './doorReleases/isDoorReleaseTriggered';
 export {default as getExpiredDoorReleases } from './doorReleases/getExpiredDoorReleases';
+export {default as getDoorReleaseStatusForSelectedRoom } from './doorReleases/getDoorReleaseStatusForSelectedRoom';
 export {default as getDoorReleaseInSelectedRoom } from './doorReleases/getDoorReleaseInSelectedRoom';
 export {default as getCharactersInRoom} from './characters/getCharactersInRoom';
 export {default as getCharactersInSelectedRoom} from './characters/getCharactersInSelectedRoom';
@@ -54,4 +55,4 @@ export const isPlaying = createSelector(
 
 export const isShowingCamera = ({showingCamera}) => showingCamera;
 
-
+export const getTimedActions= ({timedActions, tickCount}) => timedActions[tickCount] || [];
