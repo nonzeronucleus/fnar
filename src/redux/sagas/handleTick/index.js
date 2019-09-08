@@ -1,7 +1,6 @@
-import { put, select, all, call } from 'redux-saga/effects';
+import { put, select, all } from 'redux-saga/effects';
 import {  getCurrentTick, getTimedActions } from '../../selectors';
 import * as actions from '../../actions';
-import checkDoorReleases from './checkDoorReleases';
 import checkPowerUsage from './checkPowerUsage';
 import handleCharacterAction from './handleCharacterAction';
 
@@ -41,8 +40,6 @@ export function* handleTick() {
     yield checkTime();
 
     yield checkTimedActions();
-
-    yield checkDoorReleases();
 
     yield checkMove();
 

@@ -3,7 +3,6 @@ import { getBuilding } from '../../selectors';
 import moveCharacter from './moveCharacter';
 import releaseButtons from '../../../consts/releaseButtons';
 import { getCharacterLocations } from '../../selectors';
-import characters from '../../../consts/characters';
 
 import * as actions from '../../actions';
 
@@ -13,7 +12,7 @@ function *pickCharacterToMove() {
     const chars = yield select(getCharacterLocations);
     const numChars = Object.keys(chars).length;
     const charToMoveId = Math.floor((Math.random() * numChars))
-    return chars[3];
+    return chars[charToMoveId];
 }
 
 function* handleCharacterAction() {
@@ -22,7 +21,7 @@ function* handleCharacterAction() {
     const building = yield select(getBuilding);
     const currentLocation = building[charToMove.location];
     const releaseButton = getReleaseButton(charToMove.location);
-    if (releaseButton && (Math.random() < 10.25)) {
+    if (releaseButton && (Math.random() < 0.25)) {
         yield put(actions.pressDoorRelease({releases:releaseButton}));
     }
     else {

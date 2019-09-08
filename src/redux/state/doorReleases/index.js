@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
 import rooms from '../../../consts/rooms';
-import expiryTime from './expiryTime';
 import status from './status';
 
 const doorRelease = currentRoom => combineReducers({
-    expiryTime:expiryTime(currentRoom),
     status:status(currentRoom)
 })
 
