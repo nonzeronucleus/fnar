@@ -16,7 +16,6 @@ function *pickCharacterToMove() {
 }
 
 function* handleCharacterAction() {
-
     const charToMove = yield pickCharacterToMove();
     const building = yield select(getBuilding);
     const currentLocation = building[charToMove.location];
