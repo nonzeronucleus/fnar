@@ -1,4 +1,4 @@
-import rooms from '../../consts/rooms';
+import rooms from '../../../consts/rooms';
 
 const addExit = room => (exits, door) => {
   if (door[0] === room) {

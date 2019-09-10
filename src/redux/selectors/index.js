@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect'
 import characters from '../../consts/characters';
-import getRoomsWithDoors from './getRoomsWithDoors';
 import gameStates from '../../consts/gameStates'
 export {default as isDoorReleaseTriggered } from './doorReleases/isDoorReleaseTriggered';
 export {default as getDoorReleaseStatusForSelectedRoom } from './doorReleases/getDoorReleaseStatusForSelectedRoom';
@@ -8,6 +7,7 @@ export {default as getDoorReleaseInSelectedRoom } from './doorReleases/getDoorRe
 export {default as getCharactersInRoom} from './characters/getCharactersInRoom';
 export {default as getCharactersInSelectedRoom} from './characters/getCharactersInSelectedRoom';
 export {default as getPower } from './power/getPower';
+export {default as getBuilding} from './building/getBuilding';
 
 export const getCharacterLocations = ({characterLocations}) => {
     return Object.values(characters).map(character => ({character:character, location:characterLocations.get(character)}))
@@ -37,13 +37,6 @@ export const getPowerUsage = ({officeDoors, showingCamera}) => {
 
     return (getDoorUsage(officeDoors)+ getCameraUsage(showingCamera));
 }
-
-const getDoorways = ({doorways}) => doorways
-
-export const getBuilding = createSelector(
-    getDoorways,
-    doorways => getRoomsWithDoors(doorways)
-)
 
 export const getGameState = ({gameState}) => gameState;
 
