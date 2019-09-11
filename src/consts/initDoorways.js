@@ -1,8 +1,6 @@
 import rooms from "./rooms";
 
 export default [
-  [rooms.OFFICE, rooms.LEFT_DOOR],
-  [rooms.OFFICE, rooms.RIGHT_DOOR],
   [rooms.LEFT_DOOR, rooms.LEFT_HALL],
   [rooms.RIGHT_DOOR, rooms.RIGHT_HALL],
   [rooms.LEFT_CORRIDOR, rooms.LEFT_HALL],

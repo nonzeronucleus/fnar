@@ -8,6 +8,7 @@ export {default as getCharactersInRoom} from './characters/getCharactersInRoom';
 export {default as getCharactersInSelectedRoom} from './characters/getCharactersInSelectedRoom';
 export {default as getPower } from './power/getPower';
 export {default as getBuilding} from './building/getBuilding';
+export {default as isDoorOpen} from './building/isDoorOpen';
 
 export const getCharacterLocations = ({characterLocations}) => {
     return Object.values(characters).map(character => ({character:character, location:characterLocations.get(character)}))
@@ -27,8 +28,6 @@ export const getTime = ({tickCount}) => {
 }
 
 export const getCurrentTick =({tickCount}) => tickCount;
-
-export const isDoorOpen = ({officeDoors}, door) => officeDoors[door];
 
 export const getPowerUsage = ({officeDoors, showingCamera}) => {
     const getDoorUsage = officeDoors => Object.values(officeDoors).filter(doorOpen => !doorOpen).length * 5;

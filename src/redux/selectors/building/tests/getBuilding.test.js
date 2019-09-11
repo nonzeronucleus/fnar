@@ -12,6 +12,16 @@ jest.mock('../../../../consts/rooms', () => {
     }
   });
 
+jest.mock('../getDoorways' ,() => {
+    return () => ([
+        ['left door','left hall'],
+        ['left corridor','left hall'],
+        ['right corridor','right hall'],
+        ['right corridor','dining room'],
+        ['right corridor','toilet'],
+    ])
+})
+
 it('turns a list of doorways into a list of rooms and all of the doors coming out of those rooms', ()=> {
     const state = {
         doorways:  [
