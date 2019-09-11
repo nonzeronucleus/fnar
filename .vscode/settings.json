@@ -1,0 +1,5 @@
+{
+    "typescript.suggest.enabled": false,
+    "javascript.suggest.enabled": false,
+    "elm.showSuggestionsInElmSyntax": false
+}

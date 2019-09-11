@@ -18,7 +18,7 @@ const DoorDisplay = styled.img`
 export default ({room, left}) => {
   const dispatch = useDispatch()
 
-  const toggleDoor = isOpen => dispatch(actions.toggleDoor({room, isOpen}))
+  const toggleDoor = isOpen => dispatch(actions.toggleDoor(room, isOpen))
 
   const mapState = useCallback(
     state => ({
