@@ -20,7 +20,7 @@ it('turns a list of doorways into a list of rooms and all of the doors coming ou
             ['right corridor','right hall'],
             ['right corridor','dining room'],
             ['right corridor','toilet'],
-            ]
+        ]
     }
 
     const expectedRooms = {

@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
 import getRoomsWithDoors from './getRoomsWithDoors';
-
-const getDoorways = ({ doorways }) => doorways;
+import getDoorways from './getDoorways';
 
 const getBuilding = createSelector(getDoorways, doorways => getRoomsWithDoors(doorways));
 
