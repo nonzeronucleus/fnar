@@ -5,7 +5,7 @@ import * as actions from '../../actions';
 function* moveCharacter(charToMove, exits) {
     const newLocationId = Math.floor((Math.random() * exits.length));
     const to = exits[newLocationId];
-    yield put(actions.moveEnemy({ character: charToMove.character, to }));
+    yield put(actions.moveEnemy(charToMove.character, to ));
     if (to === rooms.OFFICE) {
         yield put(actions.loseGame());
     }

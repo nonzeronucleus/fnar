@@ -3,15 +3,15 @@ import * as actions from '../actions';
 import { getCurrentTick } from '../selectors';
 import releaseButtonStatus from '../../consts/releaseButtonStatus'
 
-export function* handleDoorRelease({payload: {releases}}) {
+function* handleDoorRelease({payload: {releasedDoor}}) {
     const currentTick = yield select(getCurrentTick);
 
-    yield put(actions.toggleDoorRelease(releases, currentTick));
-    yield put(actions.setDoorReleaseStatus(releases, releaseButtonStatus.enabled));
-    yield put(actions.toggleDoor(releases, true));
+    yield put(actions.setDoorReleaseStatus(releasedDoor, releaseButtonStatus.enabled));
 
     yield put(actions.addFutureAction(
-        actions.setDoorReleaseStatus(releases, releaseButtonStatus.disabled),
-        currentTick + 2
+        actions.setDoorReleaseStatus(releasedDoor, releaseButtonStatus.disabled),
+        currentTick + 5
     ));
 }
+
+export default handleDoorRelease;

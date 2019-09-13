@@ -2,7 +2,7 @@ import { takeLatest } from 'redux-saga/effects';
 import * as actions from '../actions';
 import {start} from './start';
 import {handleTick} from './handleTick';
-import {handleDoorRelease} from './handleDoorRelease';
+import handleDoorRelease from './handleDoorRelease';
 import handleCharacterAction from './handleTick/handleCharacterAction';
 
 function* sagas() {

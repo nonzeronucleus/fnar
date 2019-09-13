@@ -4,14 +4,13 @@ export const start = createAction('Start');
 export const tick = createAction('Tick', tickCount => ({tickCount}));
 export const addFutureAction = createAction('Add future action', (futureAction, atTick, repeatFrequency) => ({futureAction, atTick, repeatFrequency}));
 export const triggerCharacterAction = createAction('Trigger character action', () => ({}))
-export const toggleDoor = createAction('Toggle Door', (room, isOpen) => ({room, isOpen}))
-export const toggleDoorRelease = createAction('Toggle Door Release', (releases, currentTick) => ({releases, currentTick}))
+export const toggleDoor = createAction('Toggle Door', (door, isOpen) => ({door, isOpen}))
+export const pressDoorRelease = createAction('Press Door Release', (releasedDoor) => ({releasedDoor}))
+export const moveEnemy = createAction('Move Enemy', (character, to) =>({character,to}));
+export const selectRoom = createAction('Select Room', (room) => ({room}));
 
 
-
-export const moveEnemy = createAction('Move Enemy');
-export const selectRoom = createAction('Select Room');
-export const pressDoorRelease = createAction('Press Door Release')
+// export const moveEnemy = createAction('Move Enemy');
 export const setDoorReleaseStatus = createAction('Set Door Release Status', (door, status) => ({door, status}))
 export const disablePower = createAction('Disable Power')
 export const loseGame = createAction('Lose Game')

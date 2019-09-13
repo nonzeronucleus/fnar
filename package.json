@@ -19,6 +19,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-react-hook": "^3.3.2",
     "redux-saga": "^1.0.5",
+    "redux-saga-test-engine": "^3.0.0",
     "reselect": "^4.0.0",
     "styled-components": "^4.3.2"
   },
